@@ -1,0 +1,94 @@
+// 3. Measures
+// Select the _Measures table, then for each block below: Home -> New measure, paste it,
+// set the format string shown in the comment and the display folder named in the section header.
+//
+// Why REMOVEFILTERS names both segment columns: segment is sorted by segment_order, so any visual
+// grouped by segment filters segment_order too. Removing only segment would leave the share at 100%.
+
+
+// ============================== Display folder: Customers ==============================
+
+// Number of scored customers in the current filter. Format: #,0
+Customers =
+COUNTROWS ( customers )
+
+// This group's customers as a share of all customers (the country slicer still applies). Format: 0.0%
+Customer Share % =
+VAR _here = [Customers]
+VAR _all =
+    CALCULATE ( [Customers], REMOVEFILTERS ( customers[segment], customers[segment_order] ) )
+RETURN
+    DIVIDE ( _here, _all )
+
+// Median days since the customer's last purchase, counted to the snapshot date 10 Dec 2011. Format: #,0
+Median Days Since Last Purchase =
+MEDIAN ( customers[recency_days] )
+
+// Median number of purchase invoices per customer. Format: #,0.0
+Median Orders =
+MEDIAN ( customers[orders] )
+
+// Share of customers with two or more purchase invoices. Format: 0.0%
+Repeat Customers % =
+VAR _repeat =
+    CALCULATE ( [Customers], customers[orders] >= 2 )
+RETURN
+    DIVIDE ( _repeat, [Customers] )
+
+// Number of at-risk customers: good customers who stopped buying. Format: #,0
+At-Risk Customers =
+CALCULATE ( [Customers], customers[segment] = "At risk" )
+
+
+// ============================== Display folder: Revenue ==============================
+
+// Purchases minus returns. Format: £#,0
+Revenue =
+SUM ( invoices[amount] )
+
+// This group's revenue as a share of all revenue (the country slicer still applies). Format: 0.0%
+Revenue Share % =
+VAR _here = [Revenue]
+VAR _all =
+    CALCULATE ( [Revenue], REMOVEFILTERS ( customers[segment], customers[segment_order] ) )
+RETURN
+    DIVIDE ( _here, _all )
+
+// Number of purchase invoices; returns are not counted. Format: #,0
+Purchase Invoices =
+CALCULATE ( COUNTROWS ( invoices ), invoices[invoice_type] = "Purchase" )
+
+// Median spend per customer (purchases minus returns). Format: £#,0
+Median Spend =
+MEDIAN ( customers[spend] )
+
+// What the at-risk customers have spent so far: the revenue at stake. Format: £#,0
+At-Risk Revenue =
+CALCULATE ( [Revenue], customers[segment] = "At risk" )
+
+
+// ============================== Display folder: Cohorts ==============================
+
+// Customers with at least one purchase in the current filter. Format: #,0
+Active Customers =
+CALCULATE ( DISTINCTCOUNT ( invoices[customer_id] ), invoices[invoice_type] = "Purchase" )
+
+// Share of a starting month's customers who bought again in a later month.
+// Use with customers[cohort_month] on rows and invoices[month_offset] on columns:
+// [Customers] is not filtered by month_offset (single-direction relationship), so it is the group size. Format: 0%
+Return Rate % =
+DIVIDE ( [Active Customers], [Customers] )
+
+// Of the customers whose first purchase was between Jan 2010 and Nov 2011, the share who bought again the next month.
+// Dec 2009 is left out (it also holds older customers) and Dec 2011 too (no next month in the data). Format: 0.0%
+New Customers Back Next Month % =
+VAR _newCustomers =
+    CALCULATETABLE (
+        VALUES ( customers[customer_id] ),
+        customers[cohort_month] >= DATE ( 2010, 1, 1 ),
+        customers[cohort_month] <= DATE ( 2011, 11, 1 )
+    )
+VAR _backNextMonth =
+    CALCULATE ( [Active Customers], _newCustomers, invoices[month_offset] = 1 )
+RETURN
+    DIVIDE ( _backNextMonth, COUNTROWS ( _newCustomers ) )
