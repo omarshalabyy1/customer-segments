@@ -6,12 +6,14 @@ To run a query: from the repo folder, `python`, then `import duckdb` and `duckdb
 
 ## Page 1: Overview
 
-| Visual | Must show |
-|---|---|
-| Customers | 5,832 |
-| Revenue (purchases minus returns) | £16,361,570 |
-| Purchase invoices | 36,573 |
-| Customers who came back | 72.6% |
+| Check | Visual | Must show |
+|---|---|---|
+| C1 | Customers | 5,832 |
+| C2 | Revenue, net of returns | £16,361,570 |
+| C3 | Purchase invoices | 36,573 |
+| C4 | Customers who came back | 72.6% |
+| C5 | Good customers at risk | 631 |
+| C6 | Revenue from at-risk customers | £1,978,042 |
 
 ```sql
 SELECT
@@ -19,10 +21,12 @@ SELECT
     (SELECT ROUND(SUM(amount), 2) FROM 'data/invoices.csv')                    AS revenue,
     (SELECT COUNT(*) FROM 'data/invoices.csv' WHERE invoice_type = 'Purchase') AS purchase_invoices,
     (SELECT ROUND(100.0 * AVG(CASE WHEN orders >= 2 THEN 1 ELSE 0 END), 1)
-       FROM 'data/customers.csv')                                              AS repeat_customers_pct
+       FROM 'data/customers.csv')                                              AS repeat_customers_pct,
+    (SELECT COUNT(*) FROM 'data/customers.csv' WHERE segment = 'At risk')      AS at_risk_customers,
+    (SELECT ROUND(SUM(spend)) FROM 'data/customers.csv' WHERE segment = 'At risk') AS at_risk_revenue
 ```
 
-The bar chart and the table, one row per group:
+**C7** (bar chart and table rows) and **C8** (table total row), one row per group:
 
 | Group | Customers | Share of customers | Revenue | Share of revenue | Days since last order (median) | Orders (median) | Spend (median) |
 |---|---|---|---|---|---|---|---|
@@ -47,7 +51,7 @@ GROUP BY segment, segment_order
 ORDER BY segment_order
 ```
 
-Revenue by month, the last three columns: October 2011 £961,966, November 2011 £1,112,796, December 2011 £338,152 (the data stops on 9 December).
+**C9** Revenue by month, the last three columns: October 2011 £961,966, November 2011 £1,112,796, December 2011 £338,152 (the data stops on 9 December).
 
 ```sql
 SELECT strftime(invoice_date, '%Y-%m') AS month, ROUND(SUM(amount)) AS revenue
@@ -59,7 +63,7 @@ LIMIT 3
 
 ## Pages 2 to 6: one page per group
 
-The five cards on each page are the group's row in the table above. The first row of the "Who to call first" table:
+**C10** The five cards on each page are the group's row in the C7 table. **C11** The first row of the "Who to call first" table:
 
 | Page | Customer | Country | Last order | Days since | Orders | Spend |
 |---|---|---|---|---|---|---|
@@ -78,12 +82,12 @@ ORDER BY segment_order
 
 ## Page 7: Return by starting month
 
-| Visual | Must show |
-|---|---|
-| New customers who bought again the next month | 20.8% |
-| Customers who came back at least once | 72.6% |
-| Matrix, column 0 | 100% on every row |
-| Matrix, column 1 | Dec 2009 35.1%, Jan 2010 21.5%, Oct 2011 32.0%, Nov 2011 14.2%; Dec 2011 has no column 1 |
+| Check | Visual | Must show |
+|---|---|---|
+| C12 | New customers who bought again the next month | 20.8% |
+| C13 | Customers who came back at least once | 72.6% |
+| C14 | Matrix, column 0 | 100.0% on every row |
+| C15 | Matrix, column 1 | Dec 2009 35.1%, Jan 2010 21.5%, Oct 2011 32.0%, Nov 2011 14.2%; Dec 2011 has no column 1 |
 
 ```sql
 -- Column 1 of the matrix, row by row
@@ -102,6 +106,14 @@ FROM 'data/customers.csv' c
 LEFT JOIN 'data/invoices.csv' i
        ON i.customer_id = c.customer_id AND i.invoice_type = 'Purchase' AND i.month_offset = 1
 WHERE c.cohort_month BETWEEN DATE '2010-01-01' AND DATE '2011-11-01'
+```
+
+## The country slicer
+
+**C16** With the slicer set to United Kingdom, the Overview Customers card shows 5,319, and the shares on every page are shares of UK customers.
+
+```sql
+SELECT COUNT(*) AS uk_customers FROM 'data/customers.csv' WHERE country = 'United Kingdom'
 ```
 
 ## If a number is wrong

@@ -2,6 +2,8 @@
 
 A small star: one fact table (`invoices`), two dimensions (`customers` and `Date`) and a table that only holds the measures.
 
+**Before anything else:** File → Options and settings → Options → **Current File → Data Load** → untick **Auto date/time**. Why: the model has its own Date table; the hidden automatic ones only add size and confusion.
+
 ```
 customers (1) ──► (*) invoices (*) ◄── (1) Date
 ```
@@ -31,6 +33,10 @@ ADDCOLUMNS (
 
 Then select the table, **Table tools → Mark as date table**, and pick the `Date` column.
 
+Why: one row per day across the whole data range lets the revenue-by-month chart show every month, and marking it lets time intelligence work if it is added later. It runs to 31 Dec 2011 so the last month is complete.
+
+No calculated columns. The scores, groups and month offsets are computed once in the notebook and loaded as plain columns.
+
 ## The measures table
 
 **Home → Enter data**, name the table `_Measures`, leave the one column empty and click **Load**. After you add the first measure to it (file 3), hide its `Column1`. It moves to the top of the Data pane.
@@ -39,29 +45,29 @@ Then select the table, **Table tools → Mark as date table**, and pick the `Dat
 
 **Model view → Manage relationships → New**:
 
-| From (one side) | To (many side) | Cardinality | Cross-filter direction | Active |
-|---|---|---|---|---|
-| `customers[customer_id]` | `invoices[customer_id]` | One to many | Single (customers filters invoices) | Yes |
-| `Date[Date]` | `invoices[invoice_date]` | One to many | Single (Date filters invoices) | Yes |
+| From (one side) | To (many side) | Cardinality | Cross-filter direction | Active | Why |
+|---|---|---|---|---|---|
+| `customers[customer_id]` | `invoices[customer_id]` | One to many | Single (customers filters invoices) | Yes | A group or country choice filters that group's invoices, so revenue follows the group |
+| `Date[Date]` | `invoices[invoice_date]` | One to many | Single (Date filters invoices) | Yes | Months on the revenue chart come from the Date table |
 
 Single direction matters for the cohort page: a filter on `invoices[month_offset]` must not shrink the `customers` count, because that count is the size of the starting-month group.
 
 ## Column settings
 
-| Column | Setting |
-|---|---|
-| `customers[segment]` | **Sort by column:** `segment_order` (Champions, Loyal, New, At risk, Lost) |
-| `customers[segment_order]` | Hide |
-| `customers[cohort_month]` | Format `mmm yyyy` |
-| `customers[first_purchase]`, `customers[last_purchase]` | Format `d mmm yyyy` |
-| `customers[spend]`, `invoices[amount]` | Format `£#,0.00`; **Summarization:** Don't summarize |
-| `customers[customer_id]`, `customers[recency_days]`, `customers[orders]`, the three `_score` columns | **Summarization:** Don't summarize |
-| `customers[country]` | **Data category:** Country/Region |
-| `Date[Month]` | **Sort by column:** `Month Start` |
-| `Date[Month Start]` | Format `mmm yyyy` |
-| `invoices[customer_id]`, `invoices[invoice_date]` | Hide (use `customers` and `Date` instead) |
-| `invoices[month_offset]` | **Summarization:** Don't summarize |
+| Column | Setting | Why |
+|---|---|---|
+| `customers[segment]` | **Sort by column:** `segment_order` (Champions, Loyal, New, At risk, Lost) | Best group first, not alphabetical |
+| `customers[segment_order]` | Hide | Only used for sorting |
+| `customers[cohort_month]` | Format `mmm yyyy` | Matrix rows read "Jan 2010" |
+| `customers[first_purchase]`, `customers[last_purchase]` | Format `d mmm yyyy` | Readable dates in the call lists |
+| `customers[spend]`, `invoices[amount]` | Format `£#,0.00`; **Summarization:** Don't summarize | Totals come from measures, never from dragged columns |
+| `customers[customer_id]`, `customers[recency_days]`, `customers[orders]`, the three `_score` columns | **Summarization:** Don't summarize | Each row in a call list shows the customer's own value, not a sum |
+| `customers[country]` | **Data category:** Country/Region | Power BI treats it as a place |
+| `Date[Month]` | **Sort by column:** `Month Start` | "Jan 2010" sorts by date, not alphabetically |
+| `Date[Month Start]` | Format `mmm yyyy` | Axis labels on the revenue chart |
+| `invoices[customer_id]`, `invoices[invoice_date]` | Hide | Use `customers` and `Date` instead, so every filter goes through a dimension |
+| `invoices[month_offset]` | **Summarization:** Don't summarize | It is a column header in the matrix, not a number to add |
 
 ## Display folders
 
-In the measures table, set each measure's **Display folder** (Properties pane) to the folder named in `03-measures.dax`: `Customers`, `Revenue` or `Cohorts`.
+In the measures table, set each measure's **Display folder** (Properties pane) to the folder named in `03-measures.dax`: `Customers`, `Revenue` or `Cohorts`. Why: 14 measures are easier to find in three folders than in one list.

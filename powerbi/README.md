@@ -22,13 +22,17 @@ This folder lets you build the report in Power BI Desktop from nothing, by copyi
 
 ## Order to follow
 
-Run the notebook first (or use the `data/*.csv` files already in the repo), then:
+Follow [`08-build-checklist.md`](08-build-checklist.md): 36 numbered steps from a blank report to the last screenshot, pointing to the file for each part and to the check numbers to verify on the way.
 
-1. [`01-power-query.md`](01-power-query.md): load the two tables
-2. [`02-model.md`](02-model.md): the Date table, the measures table, relationships and column settings
-3. [`03-measures.dax`](03-measures.dax): every measure, with its format string and display folder
-4. [`05-theme.json`](05-theme.json): **View → Themes → Browse for themes** (do this before placing visuals so they pick up the colours)
-5. [`04-pages.md`](04-pages.md): every page and visual
-6. [`06-checks.md`](06-checks.md): the numbers each page must show
+| File | Contents |
+|---|---|
+| [`01-power-query.md`](01-power-query.md) | The two queries, paste-ready M code |
+| [`02-model.md`](02-model.md) | Date table, measures table, relationships and column settings, each with its reason |
+| [`03-measures.dax`](03-measures.dax) | The 14 measures with format strings, display folders and the page each one serves |
+| [`04-pages.md`](04-pages.md) | 7 pages and 62 visuals: type, position, fields, sort, labels, formatting |
+| [`05-theme.json`](05-theme.json) | The theme in the portfolio's colours; import with **View → Themes → Browse for themes** before placing visuals |
+| [`06-checks.md`](06-checks.md) | Checks C1 to C16: the numbers each page must show, with the SQL behind them |
+| [`07-interactions.md`](07-interactions.md) | Edit-interactions per page, filters, drill-through, bookmarks and tooltips |
+| [`08-build-checklist.md`](08-build-checklist.md) | The build, step by step |
 
 Save the report as `powerbi/customer-segments.pbix`, export one screenshot per page into `powerbi/screenshots/` (names listed in `04-pages.md`), and commit both.

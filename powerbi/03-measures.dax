@@ -4,6 +4,16 @@
 //
 // Why REMOVEFILTERS names both segment columns: segment is sorted by segment_order, so any visual
 // grouped by segment filters segment_order too. Removing only segment would leave the share at 100%.
+//
+// 14 measures. No calculated columns. One calculated table (Date), in 02-model.md.
+//
+// Measures by page (every measure on a visual is defined below):
+//   Overview          Customers, Revenue, Purchase Invoices, Repeat Customers %, At-Risk Customers,
+//                     At-Risk Revenue, Customer Share %, Revenue Share %, Median Days Since Last Purchase,
+//                     Median Orders, Median Spend
+//   Group pages (5)   Customers, Customer Share %, Revenue Share %, Median Days Since Last Purchase, Median Orders
+//   Return by month   New Customers Back Next Month %, Repeat Customers %, Return Rate %
+//   Helper only       Active Customers (used inside Return Rate % and New Customers Back Next Month %)
 
 
 // ============================== Display folder: Customers ==============================

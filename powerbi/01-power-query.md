@@ -79,4 +79,11 @@ in
 | Blank Offset To Null | Returns have an empty `month_offset`; this makes it a real blank instead of an error |
 | Changed Type | Sets each column's type. `invoice` stays text: return numbers start with `C` |
 
-Click **Close & Apply**. Both queries load; there are no staging queries.
+## Summary
+
+| Query | Source file | Columns | Renames | Load |
+|---|---|---|---|---|
+| `customers` | `data/customers.csv` | 13 | None: the CSV headers are already the model names | Enabled |
+| `invoices` | `data/invoices.csv` | 6 | None | Enabled |
+
+There are no staging or disabled queries. Click **Close & Apply**.
