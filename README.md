@@ -99,7 +99,7 @@ git clone https://github.com/omarshalabyy1/customer-segments
 cd customer-segments
 pip install -r requirements.txt
 cd analysis
-jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
+python -m jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
 ```
 
 The first run downloads the source file (about 45 MB) into `data/`; reading it takes a few minutes. The notebook rewrites the charts in `docs/` and the two tables in `data/` that Power BI loads.

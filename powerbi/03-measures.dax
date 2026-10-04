@@ -75,7 +75,7 @@ CALCULATE ( DISTINCTCOUNT ( invoices[customer_id] ), invoices[invoice_type] = "P
 
 // Share of a starting month's customers who bought again in a later month.
 // Use with customers[cohort_month] on rows and invoices[month_offset] on columns:
-// [Customers] is not filtered by month_offset (single-direction relationship), so it is the group size. Format: 0%
+// [Customers] is not filtered by month_offset (single-direction relationship), so it is the group size. Format: 0.0%
 Return Rate % =
 DIVIDE ( [Active Customers], [Customers] )
 
