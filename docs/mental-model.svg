@@ -23,7 +23,7 @@
     .group { font-size: 16px; font-weight: 700; fill: #FFFFFF; }
     .big { font-size: 22px; font-weight: 700; fill: #FFFFFF; }
     .small { font-size: 12.5px; fill: #CBD5E1; }
-    .call { font-size: 12.5px; font-weight: 700; fill: #FCD34D; }
+    .call { font-size: 12.5px; font-weight: 700; fill: #FB923C; }
   </style>
 
   <rect width="1000" height="470" rx="22" fill="url(#bg)"/>
@@ -31,40 +31,40 @@
   <text x="40" y="76" class="sub">Each customer gets three scores, from 1 (worst quarter of customers) to 4 (best quarter). Two questions turn them into five groups.</text>
 
   <!-- Left: three scores -->
-  <rect x="40" y="105" width="300" height="325" rx="14" fill="#3B82F6" fill-opacity="0.06" stroke="#3B82F6" stroke-opacity="0.5"/>
+  <rect x="40" y="105" width="300" height="325" rx="14" fill="#2563EB" fill-opacity="0.06" stroke="#2563EB" stroke-opacity="0.5"/>
   <text x="60" y="137" class="head">Three scores per customer</text>
 
-  <circle cx="74" cy="178" r="16" fill="#3B82F6" fill-opacity="0.35"/>
+  <circle cx="74" cy="178" r="16" fill="#2563EB" fill-opacity="0.35"/>
   <text x="74" y="183" class="letter" text-anchor="middle">R</text>
   <text x="100" y="175" class="name">Recency</text>
   <text x="100" y="193" class="note">days since the last order</text>
   <g transform="translate(100,203)">
-    <rect width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.15"/><text x="20" y="14" class="pip" text-anchor="middle">1</text>
-    <rect x="46" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.35"/><text x="66" y="14" class="pip" text-anchor="middle">2</text>
-    <rect x="92" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.6"/><text x="112" y="14" class="pip" text-anchor="middle">3</text>
-    <rect x="138" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.9"/><text x="158" y="14" class="pip" text-anchor="middle">4</text>
+    <rect width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.15"/><text x="20" y="14" class="pip" text-anchor="middle">1</text>
+    <rect x="46" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.35"/><text x="66" y="14" class="pip" text-anchor="middle">2</text>
+    <rect x="92" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.6"/><text x="112" y="14" class="pip" text-anchor="middle">3</text>
+    <rect x="138" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.9"/><text x="158" y="14" class="pip" text-anchor="middle">4</text>
   </g>
 
-  <circle cx="74" cy="268" r="16" fill="#3B82F6" fill-opacity="0.35"/>
+  <circle cx="74" cy="268" r="16" fill="#2563EB" fill-opacity="0.35"/>
   <text x="74" y="273" class="letter" text-anchor="middle">F</text>
   <text x="100" y="265" class="name">Frequency</text>
   <text x="100" y="283" class="note">number of orders</text>
   <g transform="translate(100,293)">
-    <rect width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.15"/><text x="20" y="14" class="pip" text-anchor="middle">1</text>
-    <rect x="46" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.35"/><text x="66" y="14" class="pip" text-anchor="middle">2</text>
-    <rect x="92" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.6"/><text x="112" y="14" class="pip" text-anchor="middle">3</text>
-    <rect x="138" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.9"/><text x="158" y="14" class="pip" text-anchor="middle">4</text>
+    <rect width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.15"/><text x="20" y="14" class="pip" text-anchor="middle">1</text>
+    <rect x="46" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.35"/><text x="66" y="14" class="pip" text-anchor="middle">2</text>
+    <rect x="92" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.6"/><text x="112" y="14" class="pip" text-anchor="middle">3</text>
+    <rect x="138" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.9"/><text x="158" y="14" class="pip" text-anchor="middle">4</text>
   </g>
 
-  <circle cx="74" cy="358" r="16" fill="#3B82F6" fill-opacity="0.35"/>
+  <circle cx="74" cy="358" r="16" fill="#2563EB" fill-opacity="0.35"/>
   <text x="74" y="363" class="letter" text-anchor="middle">M</text>
   <text x="100" y="355" class="name">Spend</text>
   <text x="100" y="373" class="note">purchases minus returns</text>
   <g transform="translate(100,383)">
-    <rect width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.15"/><text x="20" y="14" class="pip" text-anchor="middle">1</text>
-    <rect x="46" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.35"/><text x="66" y="14" class="pip" text-anchor="middle">2</text>
-    <rect x="92" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.6"/><text x="112" y="14" class="pip" text-anchor="middle">3</text>
-    <rect x="138" width="40" height="20" rx="5" fill="#3B82F6" fill-opacity="0.9"/><text x="158" y="14" class="pip" text-anchor="middle">4</text>
+    <rect width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.15"/><text x="20" y="14" class="pip" text-anchor="middle">1</text>
+    <rect x="46" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.35"/><text x="66" y="14" class="pip" text-anchor="middle">2</text>
+    <rect x="92" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.6"/><text x="112" y="14" class="pip" text-anchor="middle">3</text>
+    <rect x="138" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.9"/><text x="158" y="14" class="pip" text-anchor="middle">4</text>
   </g>
 
   <path d="M346 268H392" stroke="#64748B" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
@@ -84,30 +84,30 @@
   <text x="404" y="374" class="rule">R is 1 or 2</text>
 
   <!-- Champions -->
-  <rect x="530" y="150" width="210" height="135" rx="12" fill="#1D4ED8" fill-opacity="0.45" stroke="#3B82F6"/>
+  <rect x="530" y="150" width="210" height="135" rx="12" fill="#2563EB" fill-opacity="0.45" stroke="#2563EB"/>
   <text x="548" y="178" class="group">Champions</text>
   <text x="548" y="222" class="big">77% of revenue</text>
   <text x="548" y="248" class="small">1,772 customers (30%)</text>
 
   <!-- Loyal and New -->
-  <rect x="750" y="150" width="210" height="64" rx="12" fill="#60A5FA" fill-opacity="0.18" stroke="#60A5FA" stroke-opacity="0.8"/>
+  <rect x="750" y="150" width="210" height="64" rx="12" fill="#8DB0FF" fill-opacity="0.18" stroke="#8DB0FF" stroke-opacity="0.8"/>
   <text x="768" y="176" class="group">Loyal</text>
   <text x="826" y="176" class="small">2 or more orders</text>
   <text x="768" y="200" class="small">779 customers · 3% of revenue</text>
-  <rect x="750" y="221" width="210" height="64" rx="12" fill="#94A3B8" fill-opacity="0.15" stroke="#94A3B8" stroke-opacity="0.8"/>
+  <rect x="750" y="221" width="210" height="64" rx="12" fill="#C7D7FE" fill-opacity="0.12" stroke="#C7D7FE" stroke-opacity="0.8"/>
   <text x="768" y="247" class="group">New</text>
   <text x="815" y="247" class="small">1 order</text>
   <text x="768" y="271" class="small">364 customers · 1% of revenue</text>
 
   <!-- At risk -->
-  <rect x="530" y="295" width="210" height="135" rx="12" fill="#F59E0B" fill-opacity="0.18" stroke="#F59E0B"/>
+  <rect x="530" y="295" width="210" height="135" rx="12" fill="#C2410C" fill-opacity="0.3" stroke="#FB923C"/>
   <text x="548" y="323" class="group">At risk</text>
   <text x="548" y="367" class="big">631 customers</text>
   <text x="548" y="391" class="small">12% of revenue</text>
   <text x="548" y="414" class="call">Call these first</text>
 
   <!-- Lost -->
-  <rect x="750" y="295" width="210" height="135" rx="12" fill="#64748B" fill-opacity="0.18" stroke="#64748B"/>
+  <rect x="750" y="295" width="210" height="135" rx="12" fill="#4A5675" fill-opacity="0.35" stroke="#4A5675"/>
   <text x="768" y="323" class="group">Lost</text>
   <text x="768" y="367" class="big">2,286 customers</text>
   <text x="768" y="391" class="small">7% of revenue</text>

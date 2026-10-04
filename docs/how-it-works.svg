@@ -27,8 +27,8 @@
   <path class="link" d="M772 175h20"/>
 
   <!-- 01 Clean -->
-  <rect x="40" y="105" width="168" height="140" rx="14" fill="#3B82F6" fill-opacity="0.08" stroke="#3B82F6" stroke-opacity="0.7"/>
-  <circle cx="70" cy="138" r="16" fill="#3B82F6" fill-opacity="0.35"/>
+  <rect x="40" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
+  <circle cx="70" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
   <text x="70" y="143" class="num" text-anchor="middle">01</text>
   <text x="96" y="144" class="step">Clean</text>
   <text x="56" y="180" class="desc">Duplicates, unknown</text>
@@ -36,8 +36,8 @@
   <text x="56" y="218" class="desc">returns off the spend</text>
 
   <!-- 02 Score -->
-  <rect x="228" y="105" width="168" height="140" rx="14" fill="#3B82F6" fill-opacity="0.08" stroke="#3B82F6" stroke-opacity="0.7"/>
-  <circle cx="258" cy="138" r="16" fill="#3B82F6" fill-opacity="0.35"/>
+  <rect x="228" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
+  <circle cx="258" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
   <text x="258" y="143" class="num" text-anchor="middle">02</text>
   <text x="284" y="144" class="step">Score</text>
   <text x="244" y="180" class="desc">Recency, frequency</text>
@@ -45,8 +45,8 @@
   <text x="244" y="218" class="desc">scored 1 to 4</text>
 
   <!-- 03 Group -->
-  <rect x="416" y="105" width="168" height="140" rx="14" fill="#3B82F6" fill-opacity="0.08" stroke="#3B82F6" stroke-opacity="0.7"/>
-  <circle cx="446" cy="138" r="16" fill="#3B82F6" fill-opacity="0.35"/>
+  <rect x="416" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
+  <circle cx="446" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
   <text x="446" y="143" class="num" text-anchor="middle">03</text>
   <text x="472" y="144" class="step">Group</text>
   <text x="432" y="180" class="desc">Champions, loyal,</text>
@@ -54,8 +54,8 @@
   <text x="432" y="218" class="desc">and lost</text>
 
   <!-- 04 Cohorts -->
-  <rect x="604" y="105" width="168" height="140" rx="14" fill="#3B82F6" fill-opacity="0.08" stroke="#3B82F6" stroke-opacity="0.7"/>
-  <circle cx="634" cy="138" r="16" fill="#3B82F6" fill-opacity="0.35"/>
+  <rect x="604" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
+  <circle cx="634" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
   <text x="634" y="143" class="num" text-anchor="middle">04</text>
   <text x="660" y="144" class="step">Cohorts</text>
   <text x="620" y="180" class="desc">How many of each</text>
@@ -63,8 +63,8 @@
   <text x="620" y="218" class="desc">come back</text>
 
   <!-- 05 Report -->
-  <rect x="792" y="105" width="168" height="140" rx="14" fill="#F59E0B" fill-opacity="0.08" stroke="#F59E0B" stroke-opacity="0.8"/>
-  <circle cx="822" cy="138" r="16" fill="#F59E0B" fill-opacity="0.35"/>
+  <rect x="792" y="105" width="168" height="140" rx="14" fill="#C2410C" fill-opacity="0.12" stroke="#FB923C" stroke-opacity="0.8"/>
+  <circle cx="822" cy="138" r="16" fill="#C2410C" fill-opacity="0.6"/>
   <text x="822" y="143" class="num" text-anchor="middle">05</text>
   <text x="848" y="144" class="step">Report</text>
   <text x="808" y="180" class="desc">A Power BI page per</text>

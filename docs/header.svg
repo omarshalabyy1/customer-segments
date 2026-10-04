@@ -12,7 +12,7 @@
     .name { font-size: 32px; font-weight: 700; fill: #FFFFFF; }
     .sub { font-size: 16px; fill: #CBD5E1; }
     .result { font-size: 15px; fill: #FFFFFF; }
-    .hot { fill: #FCD34D; font-weight: 700; }
+    .hot { fill: #FB923C; font-weight: 700; }
     .lab { font-size: 14px; font-weight: 700; fill: #E2E8F0; }
     .in { font-size: 13px; font-weight: 700; }
     .leg { font-size: 12.5px; fill: #CBD5E1; }
@@ -26,33 +26,33 @@
   <text x="40" y="169" class="lab">Customers</text>
   <text x="40" y="217" class="lab">Revenue</text>
   <g clip-path="url(#bars)">
-  <rect x="150.0" y="150" width="246.1" height="28" fill="#1D4ED8"/>
+  <rect x="150.0" y="150" width="246.1" height="28" fill="#2563EB"/>
   <text x="273.1" y="169" class="in" fill="#FFFFFF" text-anchor="middle">30%</text>
-  <rect x="396.1" y="150" width="108.2" height="28" fill="#60A5FA"/>
+  <rect x="396.1" y="150" width="108.2" height="28" fill="#8DB0FF"/>
   <text x="450.2" y="169" class="in" fill="#0B1220" text-anchor="middle">13%</text>
-  <rect x="504.3" y="150" width="50.6" height="28" fill="#94A3B8"/>
+  <rect x="504.3" y="150" width="50.6" height="28" fill="#C7D7FE"/>
   <text x="529.6" y="169" class="in" fill="#0B1220" text-anchor="middle">6%</text>
-  <rect x="554.9" y="150" width="87.6" height="28" fill="#F59E0B"/>
-  <text x="598.7" y="169" class="in" fill="#0B1220" text-anchor="middle">11%</text>
-  <rect x="642.5" y="150" width="317.5" height="28" fill="#64748B"/>
+  <rect x="554.9" y="150" width="87.6" height="28" fill="#C2410C"/>
+  <text x="598.7" y="169" class="in" fill="#FFFFFF" text-anchor="middle">11%</text>
+  <rect x="642.5" y="150" width="317.5" height="28" fill="#4A5675"/>
   <text x="801.3" y="169" class="in" fill="#FFFFFF" text-anchor="middle">39%</text>
-  <rect x="150.0" y="198" width="624.7" height="28" fill="#1D4ED8"/>
+  <rect x="150.0" y="198" width="624.7" height="28" fill="#2563EB"/>
   <text x="462.4" y="217" class="in" fill="#FFFFFF" text-anchor="middle">77%</text>
-  <rect x="774.7" y="198" width="27.3" height="28" fill="#60A5FA"/>
-  <rect x="802.1" y="198" width="6.8" height="28" fill="#94A3B8"/>
-  <rect x="808.8" y="198" width="97.9" height="28" fill="#F59E0B"/>
-  <text x="857.8" y="217" class="in" fill="#0B1220" text-anchor="middle">12%</text>
-  <rect x="906.7" y="198" width="53.3" height="28" fill="#64748B"/>
+  <rect x="774.7" y="198" width="27.3" height="28" fill="#8DB0FF"/>
+  <rect x="802.1" y="198" width="6.8" height="28" fill="#C7D7FE"/>
+  <rect x="808.8" y="198" width="97.9" height="28" fill="#C2410C"/>
+  <text x="857.8" y="217" class="in" fill="#FFFFFF" text-anchor="middle">12%</text>
+  <rect x="906.7" y="198" width="53.3" height="28" fill="#4A5675"/>
   <text x="933.4" y="217" class="in" fill="#FFFFFF" text-anchor="middle">7%</text>
   </g>
-  <rect x="150" y="242" width="12" height="12" rx="3" fill="#1D4ED8"/>
+  <rect x="150" y="242" width="12" height="12" rx="3" fill="#2563EB"/>
   <text x="168" y="253" class="leg">Champions</text>
-  <rect x="272" y="242" width="12" height="12" rx="3" fill="#60A5FA"/>
+  <rect x="272" y="242" width="12" height="12" rx="3" fill="#8DB0FF"/>
   <text x="290" y="253" class="leg">Loyal</text>
-  <rect x="362" y="242" width="12" height="12" rx="3" fill="#94A3B8"/>
+  <rect x="362" y="242" width="12" height="12" rx="3" fill="#C7D7FE"/>
   <text x="380" y="253" class="leg">New</text>
-  <rect x="436" y="242" width="12" height="12" rx="3" fill="#F59E0B"/>
+  <rect x="436" y="242" width="12" height="12" rx="3" fill="#C2410C"/>
   <text x="454" y="253" class="leg">At risk</text>
-  <rect x="542" y="242" width="12" height="12" rx="3" fill="#64748B"/>
+  <rect x="542" y="242" width="12" height="12" rx="3" fill="#4A5675"/>
   <text x="560" y="253" class="leg">Lost</text>
 </svg>
