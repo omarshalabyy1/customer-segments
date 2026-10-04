@@ -30,7 +30,7 @@ Follow [`08-build-checklist.md`](08-build-checklist.md): 36 numbered steps from 
 | [`02-model.md`](02-model.md) | Date table, measures table, relationships and column settings, each with its reason |
 | [`03-measures.dax`](03-measures.dax) | The 14 measures with format strings, display folders and the page each one serves |
 | [`04-pages.md`](04-pages.md) | 7 pages and 62 visuals: type, position, fields, sort, labels, formatting |
-| [`05-theme.json`](05-theme.json) | The theme in the portfolio's colours; import with **View → Themes → Browse for themes** before placing visuals |
+| [`05-theme.json`](05-theme.json) | The shared portfolio theme (same file in every project); import with **View → Themes → Browse for themes** before placing visuals |
 | [`06-checks.md`](06-checks.md) | Checks C1 to C16: the numbers each page must show, with the SQL behind them |
 | [`07-interactions.md`](07-interactions.md) | Edit-interactions per page, filters, drill-through, bookmarks and tooltips |
 | [`08-build-checklist.md`](08-build-checklist.md) | The build, step by step |

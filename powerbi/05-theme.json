@@ -1,15 +1,18 @@
 {
   "name": "Customer Segments",
-  "dataColors": ["#2563EB", "#60A5FA", "#94A3B8", "#C2410C", "#64748B", "#0E1630", "#CBD5E1", "#BFDBFE"],
+  "dataColors": ["#2563EB", "#0E1630", "#8DB0FF", "#4A5675", "#1D4FD7", "#C7D7FE"],
   "background": "#FFFFFF",
   "foreground": "#0E1630",
   "tableAccent": "#2563EB",
   "good": "#2563EB",
-  "neutral": "#94A3B8",
+  "neutral": "#4A5675",
   "bad": "#C2410C",
+  "maximum": "#2563EB",
+  "center": "#8DB0FF",
+  "minimum": "#FFFFFF",
   "textClasses": {
-    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 26, "color": "#0E1630" },
-    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 12, "color": "#0E1630" },
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 28, "color": "#0E1630" },
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 13, "color": "#0E1630" },
     "header": { "fontFace": "Segoe UI Semibold", "fontSize": 12, "color": "#0E1630" },
     "label": { "fontFace": "Segoe UI", "fontSize": 10, "color": "#4A5675" }
   },
@@ -17,20 +20,12 @@
     "*": {
       "*": {
         "border": [{ "show": true, "color": { "solid": { "color": "#E2E7F1" } }, "radius": 8 }],
-        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
-        "dropShadow": [{ "show": false }],
-        "title": [{ "show": true, "fontColor": { "solid": { "color": "#0E1630" } } }]
+        "dropShadow": [{ "show": false }]
       }
     },
     "page": {
       "*": {
         "background": [{ "color": { "solid": { "color": "#F4F6FB" } }, "transparency": 0 }]
-      }
-    },
-    "card": {
-      "*": {
-        "labels": [{ "color": { "solid": { "color": "#0E1630" } } }],
-        "categoryLabels": [{ "show": false }]
       }
     }
   }
