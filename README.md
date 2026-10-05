@@ -12,7 +12,7 @@
 
 <h3 align="center">Most of the revenue comes from a third of the customers, and good customers leave quietly.<br>This finds both, and lists who to call first.</h3>
 
-<p align="center"><b>New client?</b> See <a href="docs/new-client.md">docs/new-client.md</a>: this repo is a template, and a client changes only <code>config/client.yaml</code> and the file in <code>data/input/</code>.</p>
+<p align="center">Everything that changes per client is in <code>config/client.yaml</code> and the file in <code>data/input/</code>.</p>
 
 ## The problem
 
@@ -114,7 +114,7 @@ analysis/analysis.ipynb   every number, chart and SQL check
 data/input/               the client's transactions file (README: its columns)
 data/customers.csv        one row per customer: scores and group
 data/invoices.csv         one row per invoice: purchases and returns
-docs/                     the diagrams and charts in this README, and new-client.md
+docs/                     the diagrams and charts in this README
 powerbi/                  the Power BI build, step by step
 theme.py                  writes powerbi/05-theme.json from the config
 ```
