@@ -30,7 +30,7 @@ VAR _all =
 RETURN
     DIVIDE ( _here, _all )
 
-// Median days since the customer's last purchase, counted to the snapshot date 10 Dec 2011. Format: #,0
+// Median days since the customer's last purchase, counted to the day after the last purchase in the data. Format: #,0
 Median Days Since Last Purchase =
 MEDIAN ( customers[recency_days] )
 
@@ -52,7 +52,7 @@ CALCULATE ( [Customers], customers[segment] = "At risk" )
 
 // ============================== Display folder: Revenue ==============================
 
-// Purchases minus returns. Format: £#,0
+// Purchases minus returns. Format: "<client.currency> "#,0 (demo: "GBP "#,0)
 Revenue =
 SUM ( invoices[amount] )
 
@@ -68,11 +68,11 @@ RETURN
 Purchase Invoices =
 CALCULATE ( COUNTROWS ( invoices ), invoices[invoice_type] = "Purchase" )
 
-// Median spend per customer (purchases minus returns). Format: £#,0
+// Median spend per customer (purchases minus returns). Format: "<client.currency> "#,0
 Median Spend =
 MEDIAN ( customers[spend] )
 
-// What the at-risk customers have spent so far: the revenue at stake. Format: £#,0
+// What the at-risk customers have spent so far: the revenue at stake. Format: "<client.currency> "#,0
 At-Risk Revenue =
 CALCULATE ( [Revenue], customers[segment] = "At risk" )
 
@@ -89,14 +89,22 @@ CALCULATE ( DISTINCTCOUNT ( invoices[customer_id] ), invoices[invoice_type] = "P
 Return Rate % =
 DIVIDE ( [Active Customers], [Customers] )
 
-// Of the customers whose first purchase was between Jan 2010 and Nov 2011, the share who bought again the next month.
-// Dec 2009 is left out (it also holds older customers) and Dec 2011 too (no next month in the data). Format: 0.0%
+// Of the customers whose first purchase was after the first month and before the last month in the data,
+// the share who bought again the next month. The first month is left out (it also holds older customers)
+// and the last one too (no next month yet). REMOVEFILTERS () reads the whole data range, so a slicer
+// does not move it. Format: 0.0%
 New Customers Back Next Month % =
+VAR _firstMonth =
+    CALCULATE ( MIN ( customers[cohort_month] ), REMOVEFILTERS () )
+VAR _lastDate =
+    CALCULATE ( MAX ( invoices[invoice_date] ), REMOVEFILTERS () )
+VAR _lastMonth =
+    DATE ( YEAR ( _lastDate ), MONTH ( _lastDate ), 1 )
 VAR _newCustomers =
     CALCULATETABLE (
         VALUES ( customers[customer_id] ),
-        customers[cohort_month] >= DATE ( 2010, 1, 1 ),
-        customers[cohort_month] <= DATE ( 2011, 11, 1 )
+        customers[cohort_month] > _firstMonth,
+        customers[cohort_month] < _lastMonth
     )
 VAR _backNextMonth =
     CALCULATE ( [Active Customers], _newCustomers, invoices[month_offset] = 1 )

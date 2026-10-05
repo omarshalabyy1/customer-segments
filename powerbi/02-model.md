@@ -12,9 +12,9 @@ customers (1) ──► (*) invoices (*) ◄── (1) Date
 
 | Table | Grain (one row per) | Key | Rows | Comes from |
 |---|---|---|---|---|
-| `invoices` | invoice (purchase or return) | `invoice` | 43,807 | Power Query |
-| `customers` | customer | `customer_id` | 5,832 | Power Query |
-| `Date` | day, 1 Dec 2009 to 31 Dec 2011 | `Date` | 761 | DAX calculated table (below) |
+| `invoices` | invoice (purchase or return) | `invoice` | 43,807 in the demo | Power Query |
+| `customers` | customer | `customer_id` | 5,832 in the demo | Power Query |
+| `Date` | day, from the first to the last month in the data | `Date` | 761 in the demo | DAX calculated table (below) |
 | `_Measures` | holds the measures only | none | 0 | Enter data |
 
 ## The Date table
@@ -23,8 +23,11 @@ customers (1) ──► (*) invoices (*) ◄── (1) Date
 
 ```dax
 Date =
+VAR _first = MIN ( invoices[invoice_date] )
+VAR _last = MAX ( invoices[invoice_date] )
+RETURN
 ADDCOLUMNS (
-    CALENDAR ( DATE ( 2009, 12, 1 ), DATE ( 2011, 12, 31 ) ),
+    CALENDAR ( DATE ( YEAR ( _first ), MONTH ( _first ), 1 ), EOMONTH ( _last, 0 ) ),
     "Year", YEAR ( [Date] ),
     "Month Start", DATE ( YEAR ( [Date] ), MONTH ( [Date] ), 1 ),
     "Month", FORMAT ( [Date], "mmm yyyy" )
@@ -33,7 +36,7 @@ ADDCOLUMNS (
 
 Then select the table, **Table tools → Mark as date table**, and pick the `Date` column.
 
-Why: one row per day across the whole data range lets the revenue-by-month chart show every month, and marking it lets time intelligence work if it is added later. It runs to 31 Dec 2011 so the last month is complete.
+Why: one row per day across the whole data range lets the revenue-by-month chart show every month, and marking it lets time intelligence work if it is added later. It runs from the first day of the first month to the last day of the last month, so every month is complete.
 
 No calculated columns. The scores, groups and month offsets are computed once in the notebook and loaded as plain columns.
 
@@ -58,12 +61,12 @@ Single direction matters for the cohort page: a filter on `invoices[month_offset
 |---|---|---|
 | `customers[segment]` | **Sort by column:** `segment_order` (Champions, Loyal, New, At risk, Lost) | Best group first, not alphabetical |
 | `customers[segment_order]` | Hide | Only used for sorting |
-| `customers[cohort_month]` | Format `mmm yyyy` | Matrix rows read "Jan 2010" |
+| `customers[cohort_month]` | Format `mmm yyyy` | Matrix rows read like "Jan 2026" |
 | `customers[first_purchase]`, `customers[last_purchase]` | Format `d mmm yyyy` | Readable dates in the call lists |
-| `customers[spend]`, `invoices[amount]` | Format `£#,0.00`; **Summarization:** Don't summarize | Totals come from measures, never from dragged columns |
-| `customers[customer_id]`, `customers[recency_days]`, `customers[orders]`, the three `_score` columns | **Summarization:** Don't summarize | Each row in a call list shows the customer's own value, not a sum |
+| `customers[spend]`, `invoices[amount]` | Format `"<client.currency> "#,0.00` (demo: `"GBP "#,0.00`); **Summarization:** Don't summarize | Totals come from measures, never from dragged columns |
+| `customers[recency_days]`, `customers[orders]`, the three `_score` columns | **Summarization:** Don't summarize | Each row in a call list shows the customer's own value, not a sum |
 | `customers[country]` | **Data category:** Country/Region | Power BI treats it as a place |
-| `Date[Month]` | **Sort by column:** `Month Start` | "Jan 2010" sorts by date, not alphabetically |
+| `Date[Month]` | **Sort by column:** `Month Start` | Months sort by date, not alphabetically |
 | `Date[Month Start]` | Format `mmm yyyy` | Axis labels on the revenue chart |
 | `invoices[customer_id]`, `invoices[invoice_date]` | Hide | Use `customers` and `Date` instead, so every filter goes through a dimension |
 | `invoices[month_offset]` | **Summarization:** Don't summarize | It is a column header in the matrix, not a number to add |

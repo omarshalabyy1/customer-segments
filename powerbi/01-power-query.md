@@ -18,7 +18,7 @@ let
     #"Changed Type" = Table.TransformColumnTypes(
         #"Promoted Headers",
         {
-            {"customer_id", Int64.Type},
+            {"customer_id", type text},
             {"country", type text},
             {"first_purchase", type date},
             {"last_purchase", type date},
@@ -42,7 +42,7 @@ in
 |---|---|
 | Source | Reads the CSV as UTF-8 |
 | Promoted Headers | The first row becomes the column names |
-| Changed Type | Sets each column's type, reading dates and decimals the US way (`2011-12-09`, `1234.56`) whatever your Windows region is. Money is `Currency.Type` (fixed decimal) so sums are exact |
+| Changed Type | Sets each column's type, reading dates and decimals the US way (`2011-12-09`, `1234.56`) whatever your Windows region is. Money is `Currency.Type` (fixed decimal) so sums are exact. `customer_id` stays text so leading zeros are kept |
 
 ## invoices
 
@@ -60,7 +60,7 @@ let
         #"Blank Offset To Null",
         {
             {"invoice", type text},
-            {"customer_id", Int64.Type},
+            {"customer_id", type text},
             {"invoice_date", type date},
             {"invoice_type", type text},
             {"amount", Currency.Type},

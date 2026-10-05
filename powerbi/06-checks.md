@@ -9,11 +9,11 @@ To run a query: from the repo folder, `python`, then `import duckdb` and `duckdb
 | Check | Visual | Must show |
 |---|---|---|
 | C1 | Customers | 5,832 |
-| C2 | Revenue, net of returns | £16,361,570 |
+| C2 | Revenue, net of returns | GBP 16,361,570 |
 | C3 | Purchase invoices | 36,573 |
 | C4 | Customers who came back | 72.6% |
 | C5 | Good customers at risk | 631 |
-| C6 | Revenue from at-risk customers | £1,978,042 |
+| C6 | Revenue from at-risk customers | GBP 1,978,042 |
 
 ```sql
 SELECT
@@ -30,12 +30,12 @@ SELECT
 
 | Group | Customers | Share of customers | Revenue | Share of revenue | Days since last order (median) | Orders (median) | Spend (median) |
 |---|---|---|---|---|---|---|---|
-| Champions | 1,772 | 30.4% | £12,619,473 | 77.1% | 22 | 9 | £3,102 |
-| Loyal | 779 | 13.4% | £551,754 | 3.4% | 30 | 3 | £653 |
-| New | 364 | 6.2% | £136,347 | 0.8% | 46 (45.5) | 1 | £266 |
-| At risk | 631 | 10.8% | £1,978,042 | 12.1% | 226 | 6 | £1,972 |
-| Lost | 2,286 | 39.2% | £1,075,954 | 6.6% | 396 | 1 | £341 |
-| **Total** | **5,832** | **100.0%** | **£16,361,570** | **100.0%** | **96** | **3** | **£844** |
+| Champions | 1,772 | 30.4% | GBP 12,619,473 | 77.1% | 22 | 9 | GBP 3,102 |
+| Loyal | 779 | 13.4% | GBP 551,754 | 3.4% | 30 | 3 | GBP 653 |
+| New | 364 | 6.2% | GBP 136,347 | 0.8% | 46 (45.5) | 1 | GBP 266 |
+| At risk | 631 | 10.8% | GBP 1,978,042 | 12.1% | 226 | 6 | GBP 1,972 |
+| Lost | 2,286 | 39.2% | GBP 1,075,954 | 6.6% | 396 | 1 | GBP 341 |
+| **Total** | **5,832** | **100.0%** | **GBP 16,361,570** | **100.0%** | **96** | **3** | **GBP 844** |
 
 ```sql
 SELECT segment,
@@ -51,7 +51,7 @@ GROUP BY segment, segment_order
 ORDER BY segment_order
 ```
 
-**C9** Revenue by month, the last three columns: October 2011 £961,966, November 2011 £1,112,796, December 2011 £338,152 (the data stops on 9 December).
+**C9** Revenue by month, the last three columns: October 2011 GBP 961,966, November 2011 GBP 1,112,796, December 2011 GBP 338,152 (the data stops on 9 December).
 
 ```sql
 SELECT strftime(invoice_date, '%Y-%m') AS month, ROUND(SUM(amount)) AS revenue
@@ -67,11 +67,11 @@ LIMIT 3
 
 | Page | Customer | Country | Last order | Days since | Orders | Spend |
 |---|---|---|---|---|---|---|
-| Champions | 18102 | United Kingdom | 9 Dec 2011 | 1 | 145 | £578,408.64 |
-| Loyal | 13365 | United Kingdom | 6 Nov 2011 | 34 | 2 | £2,164.32 |
-| New | 12752 | Norway | 19 Sep 2011 | 82 | 1 | £4,366.78 |
-| At risk | 16754 | United Kingdom | 2 Dec 2010 | 373 | 29 | £54,692.82 |
-| Lost | 13687 | United Kingdom | 27 Sep 2010 | 439 | 1 | £11,880.84 |
+| Champions | 18102 | United Kingdom | 9 Dec 2011 | 1 | 145 | GBP 578,408.64 |
+| Loyal | 13365 | United Kingdom | 6 Nov 2011 | 34 | 2 | GBP 2,164.32 |
+| New | 12752 | Norway | 19 Sep 2011 | 82 | 1 | GBP 4,366.78 |
+| At risk | 16754 | United Kingdom | 2 Dec 2010 | 373 | 29 | GBP 54,692.82 |
+| Lost | 13687 | United Kingdom | 27 Sep 2010 | 439 | 1 | GBP 11,880.84 |
 
 ```sql
 SELECT segment, customer_id, country, last_purchase, recency_days, orders, spend

@@ -49,17 +49,17 @@ Build the Champions page, then right-click its tab → **Duplicate page** four t
 | 6 | Card | 522, 104, 233, 96 | `[Revenue Share %]` | Title "Share of revenue" |
 | 7 | Card | 771, 104, 233, 96 | `[Median Days Since Last Purchase]` | Title "Days since last order (median)" |
 | 8 | Card | 1020, 104, 236, 96 | `[Median Orders]` | Title "Orders (median)" |
-| 9 | Table | 24, 216, 1232, 488 | `customers[customer_id]`, `customers[country]`, `customers[last_purchase]`, `customers[recency_days]`, `customers[orders]`, `customers[spend]`, `customers[r_score]`, `customers[f_score]`, `customers[m_score]` | Title "Who to call first: biggest spend at the top". Sort by `spend`, descending. Headers: "Customer", "Country", "Last order", "Days since", "Orders", "Spend", "R", "F", "M". `customer_id` format `0` (no thousands separator). Conditional formatting: **data bars** on `spend` (colour in the table below). Totals off |
+| 9 | Table | 24, 216, 1232, 488 | `customers[customer_id]`, `customers[country]`, `customers[last_purchase]`, `customers[recency_days]`, `customers[orders]`, `customers[spend]`, `customers[r_score]`, `customers[f_score]`, `customers[m_score]` | Title "Who to call first: biggest spend at the top". Sort by `spend`, descending. Headers: "Customer", "Country", "Last order", "Days since", "Orders", "Spend", "R", "F", "M". Conditional formatting: **data bars** on `spend` (colour in the table below). Totals off |
 
 **Page filter** (Filters pane → Filters on this page): `customers[segment]` is the page's group, basic filtering, one value ticked.
 
 | Page name | Page filter | Text box 1 | Text box 2 | Data bars |
 |---|---|---|---|---|
-| Champions | Champions | Champions: still buying, top half on orders and spend | What to do: keep them close. Thank them, give early access, ask for referrals. | Data colour 1 |
+| Champions | Champions | Champions: still buying, and among the best on orders and spend | What to do: keep them close. Thank them, give early access, ask for referrals. | Data colour 1 |
 | Loyal | Loyal | Loyal: still buying and coming back, with smaller or fewer orders | What to do: grow the basket. Bundles and reorder reminders. | Data colour 3 |
-| New | New | New: first and only order in the last three months | What to do: earn the second order. A follow-up within weeks of the first. | Data colour 6 |
+| New | New | New: still buying, one order so far | What to do: earn the second order. A follow-up within weeks of the first. | Data colour 6 |
 | At risk | At risk | At risk: good customers who stopped buying | What to do: call them first, biggest spend at the top, before they are lost. | Danger |
-| Lost | Lost | Lost: not a top customer, and no order for more than three months | What to do: low priority. One win-back email, no calls. | Data colour 4 |
+| Lost | Lost | Lost: not among the best, and stopped buying | What to do: low priority. One win-back email, no calls. | Data colour 4 |
 
 ## Page 7: Return by starting month
 
@@ -69,7 +69,7 @@ Build the Champions page, then right-click its tab → **Duplicate page** four t
 | 2 | Slicer | 1000, 16, 256, 56 | `customers[country]` | Synced copy of the Overview slicer |
 | 3 | Card | 24, 88, 400, 96 | `[New Customers Back Next Month %]` | Title "New customers who bought again the next month" |
 | 4 | Card | 440, 88, 400, 96 | `[Repeat Customers %]` | Title "Customers who came back at least once" |
-| 5 | Text box | 856, 88, 400, 96 | "December 2009 also holds older customers (the data starts there). December 2011 has no next month yet." | 10 pt, data colour 4 |
+| 5 | Text box | 856, 88, 400, 96 | "The first starting month also holds older customers (the data starts there). The last month has no next month yet." | 10 pt, data colour 4 |
 | 6 | Matrix | 24, 200, 1232, 504 | Rows `customers[cohort_month]`; Columns `invoices[month_offset]`; Values `[Return Rate %]` | Title "Share of each starting month's customers who bought again, by months after the first purchase". **Filters on this visual:** `invoices[month_offset]` is not blank. Rows sorted by `cohort_month` ascending, columns by `month_offset` ascending. Row and column subtotals off. Values 9 pt (0.0% from the measure). Conditional formatting: **background colour**, Format style Gradient, Minimum = Number 0, colour white; Maximum = Number 0.5, colour data colour 1 (month 0 is always 100% and would wash out the scale otherwise) |
 
 ## Not used

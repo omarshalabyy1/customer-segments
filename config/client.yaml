@@ -1,0 +1,36 @@
+# Everything a client changes. Read only through config.py (load_config).
+# A key exists here only if something reads it. There are no secrets, so there is no .env.
+
+client:
+  name: UK online gift shop           # chart titles in the notebook
+  currency: GBP                       # the label printed with amounts (notebook charts, Power BI format strings)
+
+inputs:                               # the client's file in data/input/ (columns: data/input/README.md)
+  transactions: online_retail_II.xlsx # one row per invoice line; .xlsx (every sheet is read) or .csv
+  date_format:                        # empty: Excel dates or ISO text (2011-12-09 07:45); else the text format, e.g. "%d/%m/%Y %H:%M"
+
+columns:                              # standard name: the client's header for it (quote one with # or :)
+  invoice: Invoice
+  product_code: StockCode
+  quantity: Quantity
+  invoice_date: InvoiceDate
+  price: Price
+  customer_id: Customer ID
+  country: Country
+
+rules:
+  return_invoice_prefix: C            # an invoice number starting with this is a return or a cancelled order
+  product_code_pattern: '^\d{5}'      # a product code matching this (regular expression) is a product; fees, postage and adjustments do not
+  score_levels: 4                     # recency, frequency and spend are each scored 1 to this, by equal shares of customers
+  still_buying_min_recency_score: 3   # still buying: a recency score of at least this
+  good_customer_min_frequency_plus_spend: 6   # good customer: frequency score + spend score of at least this
+
+report:
+  title: Customer Segments            # the Power BI theme name
+  colours:                            # the Power BI theme (python theme.py) and the notebook charts
+    data: ["#2563EB", "#0E1630", "#8DB0FF", "#4A5675", "#1D4FD7", "#C7D7FE"]   # 1st champions, 3rd loyal, 6th new
+    text: "#0E1630"
+    muted: "#4A5675"                  # also lost
+    page: "#F4F6FB"
+    line: "#E2E7F1"
+    danger: "#C2410C"                 # at risk

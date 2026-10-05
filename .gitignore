@@ -1,4 +1,4 @@
-data/online_retail_II.xlsx
-data/online_retail_ii.zip
+data/input/*
+!data/input/README.md
 .ipynb_checkpoints/
 __pycache__/
