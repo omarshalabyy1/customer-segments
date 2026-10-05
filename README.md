@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=2DD4BF&center=true&vCenter=true&width=760&lines=Who+brings+the+revenue%3F;Who+is+slipping+away%3F;30%25+of+customers+bring+77%25+of+revenue;Who+to+call+first" alt="Who brings the revenue?">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Python-3.10-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10">
   <img src="https://img.shields.io/badge/pandas-2.3-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="pandas 2.3">
   <img src="https://img.shields.io/badge/SQL-DuckDB-FFF000?style=for-the-badge&logo=duckdb&logoColor=black" alt="SQL in DuckDB">
@@ -41,6 +45,10 @@ Every customer is scored on three things, and two plain questions sort them into
 | **Stopped** | **At risk:** call them first | **Lost:** one win-back email, no calls |
 
 ## 📈 What it found
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/221352987-68da234d-4d62-4e9d-9d7f-098dc657c2dc.gif" width="100" alt="Moving chart">
+</p>
 
 | Question | Answer |
 |---|---|
@@ -96,6 +104,10 @@ Each number is computed in [`analysis/analysis.ipynb`](analysis/analysis.ipynb) 
 
 ## ▶️ Run it
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" width="100" alt="Code">
+</p>
+
 ```bash
 git clone https://github.com/omarshalabyy1/customer-segments
 cd customer-segments
@@ -122,3 +134,7 @@ theme.py                  writes powerbi/05-theme.json from the config
 ## 🗂️ Data
 
 [Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) from the UCI Machine Learning Repository (CC BY 4.0): about a million invoice lines from a UK online shop selling giftware, many of its customers wholesalers, from December 2009 to December 2011. Amounts are in pounds sterling. This is not work for that shop.
+
+<p align="center">
+  <img width="100%" src="docs/footer.svg" alt="Keep the customers who keep the business.">
+</p>
