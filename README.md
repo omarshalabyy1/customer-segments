@@ -18,7 +18,7 @@
 
 A shop treats every customer the same: the same emails, the same discounts, the same follow-up. Money goes on people who would buy anyway, and good customers stop ordering without anyone noticing until their revenue is already gone.
 
-## The answer
+## 🛠️ The answer
 
 Every customer is scored on three things, and two plain questions sort them into five groups. Each group gets its own action, and the at-risk group becomes a call list, biggest spender first.
 
@@ -40,7 +40,7 @@ Every customer is scored on three things, and two plain questions sort them into
 | **Still buying** | **Champions:** keep them close, ask for referrals | **Loyal** (2+ orders): grow the basket · **New** (1 order): earn the second order |
 | **Stopped** | **At risk:** call them first | **Lost:** one win-back email, no calls |
 
-## What it found
+## 📈 What it found
 
 | Question | Answer |
 |---|---|
@@ -59,7 +59,7 @@ Each row is the customers who first bought in that month; each column is a later
 
 ![How many of each month's new customers come back](docs/cohorts.png)
 
-## Data health check
+## 🧪 Data health check
 
 Before any scoring, the invoice lines were checked and cleaned, one rule at a time:
 
@@ -71,11 +71,11 @@ Before any scoring, the invoice lines were checked and cleaned, one rule at a ti
 - **Missing quantity or zero price:** free lines, or a number that could not be read.
 - **Returns are kept and taken off the spend.** Some very large orders were cancelled minutes later (one of 80,995 units); counting the order without the return would make that customer look like the best one.
 
-## The Power BI report
+## 📊 The Power BI report
 
 The [`powerbi/`](powerbi/) folder builds a seven-page report in Power BI Desktop: an overview, one page per group with its customers listed biggest spend first, and the return-by-starting-month table. Every query, relationship, DAX measure and visual is written down so the report can be rebuilt by copying and pasting, and [`powerbi/06-checks.md`](powerbi/06-checks.md) lists the numbers each page must show.
 
-## How each number was measured
+## 🔍 How each number was measured
 
 | Number | How |
 |---|---|
@@ -87,14 +87,14 @@ The [`powerbi/`](powerbi/) folder builds a seven-page report in Power BI Desktop
 
 Each number is computed in [`analysis/analysis.ipynb`](analysis/analysis.ipynb) and recomputed in SQL in the same notebook; the notebook stops if the two disagree.
 
-## Limits
+## ⚠️ Limits
 
 - The groups are relative: scores are quarters of these customers, so a customer's group depends on everyone else's.
 - Spend is revenue, not profit; there are no costs in the data.
 - The December 2009 starting month also holds older customers, because the data starts there.
 - 13.6% of the revenue has no customer ID and is outside the analysis.
 
-## Run it
+## ▶️ Run it
 
 ```bash
 git clone https://github.com/omarshalabyy1/customer-segments
@@ -119,6 +119,6 @@ powerbi/                  the Power BI build, step by step
 theme.py                  writes powerbi/05-theme.json from the config
 ```
 
-## Data
+## 🗂️ Data
 
 [Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) from the UCI Machine Learning Repository (CC BY 4.0): about a million invoice lines from a UK online shop selling giftware, many of its customers wholesalers, from December 2009 to December 2011. Amounts are in pounds sterling. This is not work for that shop.
