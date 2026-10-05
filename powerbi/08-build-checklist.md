@@ -26,7 +26,7 @@ Follow it top to bottom. At each **Check** step, compare with `06-checks.md`; st
 
 ## Add the measures (`03-measures.dax`)
 
-14. Select `_Measures`. For each of the 14 measures: **New measure**, paste, set the format string from its comment and the display folder from its section.
+14. Select `_Measures`. For each of the 14 measures: **New measure**, paste, set the format string from its comment and the display folder from its section. In a format string, replace `<client.currency>` with `client.currency` from `config/client.yaml`.
 15. Hide `_Measures[Column1]`.
 
 ## Page 1: Overview (`04-pages.md`)
