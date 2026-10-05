@@ -63,7 +63,7 @@ Single direction matters for the cohort page: a filter on `invoices[month_offset
 | `customers[segment_order]` | Hide | Only used for sorting |
 | `customers[cohort_month]` | Format `mmm yyyy` | Matrix rows read like "Jan 2026" |
 | `customers[first_purchase]`, `customers[last_purchase]` | Format `d mmm yyyy` | Readable dates in the call lists |
-| `customers[spend]`, `invoices[amount]` | Format `"<client.currency> "#,0.00` (demo: `"GBP "#,0.00`); **Summarization:** Don't summarize | Totals come from measures, never from dragged columns |
+| `customers[spend]`, `invoices[amount]` | Format `"<client.currency> "#,0.00`; **Summarization:** Don't summarize | Totals come from measures, never from dragged columns |
 | `customers[recency_days]`, `customers[orders]`, the three `_score` columns | **Summarization:** Don't summarize | Each row in a call list shows the customer's own value, not a sum |
 | `customers[country]` | **Data category:** Country/Region | Power BI treats it as a place |
 | `Date[Month]` | **Sort by column:** `Month Start` | Months sort by date, not alphabetically |

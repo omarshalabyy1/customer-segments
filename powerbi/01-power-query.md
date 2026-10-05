@@ -42,7 +42,7 @@ in
 |---|---|
 | Source | Reads the CSV as UTF-8 |
 | Promoted Headers | The first row becomes the column names |
-| Changed Type | Sets each column's type, reading dates and decimals the US way (`2011-12-09`, `1234.56`) whatever your Windows region is. Money is `Currency.Type` (fixed decimal) so sums are exact. `customer_id` stays text so leading zeros are kept |
+| Changed Type | Sets each column's type, reading dates and decimals the US way (`2026-01-31`, `1234.56`) whatever your Windows region is. Money is `Currency.Type` (fixed decimal) so sums are exact. `customer_id` stays text so leading zeros are kept |
 
 ## invoices
 

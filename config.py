@@ -44,15 +44,17 @@ def read_transactions(cfg):
     headers = cfg["columns"]  # standard name -> the client's header
     as_text = {headers[c]: str for c in TEXT_COLUMNS}
     if path.suffix.lower() == ".csv":
-        frames = {path.name: pd.read_csv(path, dtype=as_text)}
+        frames = {"": pd.read_csv(path, dtype=as_text)}
     else:
         frames = pd.read_excel(path, sheet_name=None, dtype=as_text)
-    for name, frame in frames.items():
+    for sheet, frame in frames.items():
         missing = [h for h in headers.values() if h not in frame.columns]
         if missing:
-            raise SystemExit(f"data/input/{path.name} ({name}): missing column(s): {', '.join(missing)} (columns in config/client.yaml)")
+            where = f"data/input/{path.name}" + (f", sheet {sheet}" if sheet else "")
+            raise SystemExit(f"{where}: missing column(s): {', '.join(missing)} (columns in config/client.yaml)")
 
-    lines = pd.concat([f[list(headers.values())] for f in frames.values()], ignore_index=True)
+    # Extra columns stay, so an exact duplicate means the whole line as sent, not just the standard columns.
+    lines = pd.concat(list(frames.values()), ignore_index=True)
     lines = lines.rename(columns={header: name for name, header in headers.items()})
     for c in TEXT_COLUMNS:
         lines[c] = lines[c].str.strip().replace("", pd.NA)

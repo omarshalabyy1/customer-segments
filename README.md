@@ -12,6 +12,8 @@
 
 <h3 align="center">Most of the revenue comes from a third of the customers, and good customers leave quietly.<br>This finds both, and lists who to call first.</h3>
 
+<p align="center"><b>New client?</b> See <a href="docs/new-client.md">docs/new-client.md</a>: this repo is a template, and a client changes only <code>config/client.yaml</code> and the file in <code>data/input/</code>.</p>
+
 ## The problem
 
 A shop treats every customer the same: the same emails, the same discounts, the same follow-up. Money goes on people who would buy anyway, and good customers stop ordering without anyone noticing until their revenue is already gone.
@@ -66,7 +68,7 @@ Before any scoring, the invoice lines were checked and cleaned, one rule at a ti
 - **Duplicates:** 34,335 exact copies, most of them because the two yearly files overlap on 1 to 9 December 2010.
 - **No customer ID:** these lines carry 13.6% of the revenue, but a customer who cannot be identified cannot be scored or called.
 - **Not a product:** postage, bank charges, marketplace fees and manual adjustments.
-- **Zero price:** free lines with no revenue.
+- **Missing quantity or zero price:** free lines, or a number that could not be read.
 - **Returns are kept and taken off the spend.** Some very large orders were cancelled minutes later (one of 80,995 units); counting the order without the return would make that customer look like the best one.
 
 ## The Power BI report
@@ -98,18 +100,23 @@ Each number is computed in [`analysis/analysis.ipynb`](analysis/analysis.ipynb) 
 git clone https://github.com/omarshalabyy1/customer-segments
 cd customer-segments
 pip install -r requirements.txt
+python data/demo/download.py
 cd analysis
 python -m jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
 ```
 
-The first run downloads the source file (about 45 MB) into `data/`; reading it takes a few minutes. The notebook rewrites the charts in `docs/` and the two tables in `data/` that Power BI loads.
+`data/demo/download.py` puts the demo file (about 45 MB) in `data/input/`; reading it takes a few minutes. Every client value (the file, its headers, the rules, the currency, the colours) is in `config/client.yaml`. The notebook rewrites the charts in `docs/` and the two tables in `data/` that Power BI loads; `python theme.py` writes the Power BI theme from the config.
 
 ```
+config/client.yaml        every client value
+config.py                 load_config() and the input file check
 analysis/analysis.ipynb   every number, chart and SQL check
+data/input/               the client's transactions file (README: its columns)
 data/customers.csv        one row per customer: scores and group
 data/invoices.csv         one row per invoice: purchases and returns
-docs/                     the diagrams and charts in this README
+docs/                     the diagrams and charts in this README, and new-client.md
 powerbi/                  the Power BI build, step by step
+theme.py                  writes powerbi/05-theme.json from the config
 ```
 
 ## Data

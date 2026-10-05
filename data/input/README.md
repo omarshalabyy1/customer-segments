@@ -7,7 +7,7 @@ What the client supplies, in this folder: one transactions export. Its name, its
 - One file, `.csv` or `.xlsx`. In an `.xlsx`, every sheet is read and stacked, and every sheet must have the columns.
 - One row per invoice line: a product on an invoice, with its quantity and unit price.
 - Returns and cancelled orders are rows too, with a negative quantity and an invoice number that starts with `rules.return_invoice_prefix`.
-- Every column below must be there, under the header set in `columns`. Extra columns are ignored.
+- Every column below must be there, under the header set in `columns`. Extra columns are used only to tell an exact duplicate (the whole line sent twice) from two different lines.
 
 | Standard column (`columns.*`) | Type | Example (demo header) | Used for |
 |---|---|---|---|
@@ -35,7 +35,7 @@ One line each, before anything is computed:
 config/client.yaml is missing rules.score_levels
 config/client.yaml is not valid YAML near line 12 (quote a value with # or :)
 missing data/input/<file> (inputs.transactions in config/client.yaml)
-data/input/<file> (<sheet>): missing column(s): <headers> (columns in config/client.yaml)
+data/input/<file>, sheet <sheet>: missing column(s): <headers> (columns in config/client.yaml)
 data/input/<file>: <n> invoice date(s) not readable, e.g. '<value>' (inputs.date_format in config/client.yaml)
 ```
 

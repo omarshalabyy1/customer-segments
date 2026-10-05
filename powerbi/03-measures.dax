@@ -52,7 +52,7 @@ CALCULATE ( [Customers], customers[segment] = "At risk" )
 
 // ============================== Display folder: Revenue ==============================
 
-// Purchases minus returns. Format: "<client.currency> "#,0 (demo: "GBP "#,0)
+// Purchases minus returns. Format: "<client.currency> "#,0
 Revenue =
 SUM ( invoices[amount] )
 
@@ -97,7 +97,7 @@ New Customers Back Next Month % =
 VAR _firstMonth =
     CALCULATE ( MIN ( customers[cohort_month] ), REMOVEFILTERS () )
 VAR _lastDate =
-    CALCULATE ( MAX ( invoices[invoice_date] ), REMOVEFILTERS () )
+    CALCULATE ( MAX ( invoices[invoice_date] ), REMOVEFILTERS (), invoices[invoice_type] = "Purchase" )
 VAR _lastMonth =
     DATE ( YEAR ( _lastDate ), MONTH ( _lastDate ), 1 )
 VAR _newCustomers =
