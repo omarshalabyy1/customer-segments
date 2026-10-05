@@ -131,6 +131,16 @@ powerbi/                  the Power BI build, step by step
 theme.py                  writes powerbi/05-theme.json from the config
 ```
 
+## 🏗️ For engineers
+
+Every step from the input file to the Power BI pages, with the row count of each table after one run:
+
+![Data flow, table by table](docs/data-flow.svg)
+
+The model Power BI builds from the two tables:
+
+![The Power BI model](docs/data-model.svg)
+
 ## 🗂️ Data
 
 [Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) from the UCI Machine Learning Repository (CC BY 4.0): about a million invoice lines from a UK online shop selling giftware, many of its customers wholesalers, from December 2009 to December 2011. Amounts are in pounds sterling. This is not work for that shop.
