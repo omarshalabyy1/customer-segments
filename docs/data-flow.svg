@@ -29,8 +29,8 @@
   <text x="110.0" y="138" class="where" text-anchor="middle">data/input, read by config.py</text>
   <rect x="212" y="96" width="150" height="26" rx="13" fill="#0EA5E9"/><text x="287.0" y="114" class="layer" text-anchor="middle">1  Clean</text>
   <text x="287.0" y="138" class="where" text-anchor="middle">notebook, section 2</text>
-  <rect x="384" y="96" width="140" height="26" rx="13" fill="#14B8A6"/><text x="454.0" y="114" class="layer" text-anchor="middle">2  Score and group</text>
-  <text x="454.0" y="138" class="where" text-anchor="middle">notebook, sections 3 to 7</text>
+  <rect x="384" y="96" width="132" height="26" rx="13" fill="#14B8A6"/><text x="450.0" y="114" class="layer" text-anchor="middle">2  Score and group</text>
+  <text x="450.0" y="138" class="where" text-anchor="middle">notebook, sections 3 to 7</text>
   <rect x="546" y="96" width="150" height="26" rx="13" fill="#94A3B8"/><text x="621.0" y="114" class="layer" text-anchor="middle">Output files</text>
   <text x="621.0" y="138" class="where" text-anchor="middle">written in section 8</text>
   <rect x="720" y="96" width="250" height="26" rx="13" fill="#22C55E"/><text x="845.0" y="114" class="layer" text-anchor="middle">3  Power BI</text>
@@ -41,20 +41,20 @@
   <text x="42" y="232" class="note">sheet Year 2010-2011</text>
   <text x="42" y="258" class="count">1,067,371 invoice lines</text>
   <rect x="212" y="196" width="150" height="32" rx="7" fill="#13233D" stroke="#0EA5E9" stroke-opacity="0.7"/><text x="222" y="217" class="name">lines</text><text x="354" y="217" class="count" text-anchor="end">794,163</text>
-  <path d="M190 212.0 C201.0 212.0 201.0 212.0 210 212.0" class="edge" marker-end="url(#arrow)"/>
+  <path d="M190 212.0 H211" class="edge" marker-end="url(#arrow)"/>
   <text x="216" y="256" class="count">-34,335 duplicates</text>
   <text x="216" y="274" class="count">-235,151 no customer ID</text>
   <text x="216" y="292" class="count">-3,662 not a product</text>
   <text x="216" y="310" class="count">-60 zero price or no quantity</text>
-  <rect x="384" y="150" width="140" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="171" class="name">invoices</text>
-  <rect x="384" y="242" width="140" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="263" class="name">customers</text>
-  <rect x="384" y="334" width="140" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="355" class="name">retention</text>
-  <rect x="384" y="426" width="140" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7" stroke-dasharray="4 4"/><text x="394" y="447" class="name">SQL check, DuckDB</text>
-  <text x="454" y="418" class="count" text-anchor="middle">reads invoices, customers</text>
-  <path d="M362 212.0 C373.0 212.0 373.0 166.0 382 166.0" class="edge" marker-end="url(#arrow)"/>
-  <line x1="434" y1="182" x2="434" y2="240" class="edge" marker-end="url(#arrow)"/>
-  <line x1="474" y1="242" x2="474" y2="184" class="edge" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
-  <line x1="454" y1="274" x2="454" y2="332" class="edge" marker-end="url(#arrow)"/>
+  <rect x="384" y="150" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="171" class="name">invoices</text>
+  <rect x="384" y="242" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="263" class="name">customers</text>
+  <rect x="384" y="334" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="355" class="name">retention</text>
+  <rect x="384" y="426" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7" stroke-dasharray="4 4"/><text x="394" y="447" class="name">SQL check, DuckDB</text>
+  <text x="450" y="418" class="count" text-anchor="middle">reads invoices, customers</text>
+  <path d="M362 212.0 H368 V166.0 H383" class="edge" marker-end="url(#arrow)"/>
+  <line x1="430" y1="182" x2="430" y2="240" class="edge" marker-end="url(#arrow)"/>
+  <line x1="470" y1="242" x2="470" y2="184" class="edge" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+  <line x1="450" y1="274" x2="450" y2="332" class="edge" marker-end="url(#arrow)"/>
   <rect x="546" y="150" width="150" height="32" rx="7" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/><text x="556" y="171" class="name">invoices.csv</text><text x="688" y="171" class="count" text-anchor="end">43,807</text>
   <rect x="546" y="242" width="150" height="32" rx="7" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/><text x="556" y="263" class="name">customers.csv</text><text x="688" y="263" class="count" text-anchor="end">5,832</text>
   <rect x="546" y="315.6" width="150" height="142.39999999999998" rx="10" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/>
@@ -63,10 +63,10 @@
   <text x="558" y="385.6" class="note">segments.png</text>
   <text x="558" y="407.6" class="note">at-risk.png</text>
   <text x="558" y="429.6" class="note">cohorts.png</text>
-  <path d="M524 166.0 C535.0 166.0 535.0 166.0 544 166.0" class="edge" marker-end="url(#arrow)"/>
-  <path d="M524 258.0 C535.0 258.0 535.0 258.0 544 258.0" class="edge" marker-end="url(#arrow)"/>
-  <path d="M524 258.0 C535.0 258.0 535.0 335.6 544 335.6" class="edge" marker-end="url(#arrow)"/>
-  <path d="M524 350.0 C535.0 350.0 535.0 379.6 544 379.6" class="edge" marker-end="url(#arrow)"/>
+  <path d="M516 166.0 H545" class="edge" marker-end="url(#arrow)"/>
+  <path d="M516 258.0 H545" class="edge" marker-end="url(#arrow)"/>
+  <path d="M516 266.0 H524 V335.6 H545" class="edge" marker-end="url(#arrow)"/>
+  <path d="M516 350.0 H530 V379.6 H545" class="edge" marker-end="url(#arrow)"/>
   <path d="M287 324 V474 H620 V460" class="edge" marker-end="url(#arrow)"/>
   <path d="M696 166.0 H708 V258.0 H696" class="edge" stroke="#94A3B8"/>
   <line x1="708" y1="212.0" x2="724" y2="212.0" class="edge" stroke="#22C55E" marker-end="url(#arrow)"/>

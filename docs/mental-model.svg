@@ -67,7 +67,7 @@
     <rect x="138" width="40" height="20" rx="5" fill="#2563EB" fill-opacity="0.9"/><text x="158" y="14" class="pip" text-anchor="middle">4</text>
   </g>
 
-  <path d="M346 268H392" stroke="#64748B" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M346 268H527" stroke="#64748B" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 
   <!-- Column questions -->
   <text x="635" y="122" class="axis" text-anchor="middle">Good customer</text>
