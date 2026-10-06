@@ -2,7 +2,7 @@
 
 Two queries, both loaded into the model. They read the two files the notebook writes to `data/`, so the cleaning lives in one place (the notebook) and Power Query only sets the types.
 
-For each query: **Home → Get data → Blank query**, rename it, then **Advanced Editor**, paste the code and click **Done**. If your clone is not at `C:\Users\DELL\GitHub\customer-segments`, change the path in both queries.
+For each query: **Home → Get data → Blank query**, rename it, then **Advanced Editor**, paste the code and click **Done**. If your clone is not at `C:\Users\you\GitHub\customer-segments`, change the path in both queries.
 
 ## customers
 
@@ -11,7 +11,7 @@ One row per customer, with their scores and group. 5,832 rows.
 ```m
 let
     Source = Csv.Document(
-        File.Contents("C:\Users\DELL\GitHub\customer-segments\data\customers.csv"),
+        File.Contents("C:\Users\you\GitHub\customer-segments\data\customers.csv"),
         [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
     ),
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
@@ -51,7 +51,7 @@ One row per invoice: purchases and returns. 43,807 rows. Returns have a negative
 ```m
 let
     Source = Csv.Document(
-        File.Contents("C:\Users\DELL\GitHub\customer-segments\data\invoices.csv"),
+        File.Contents("C:\Users\you\GitHub\customer-segments\data\invoices.csv"),
         [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
     ),
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
