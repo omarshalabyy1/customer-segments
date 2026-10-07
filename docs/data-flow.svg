@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 528" width="1000" height="528" role="img" aria-label="Data flow, table by table: config.py reads online_retail_II.xlsx, two yearly sheets, 1,067,371 invoice lines. The notebook cleans them to 794,163 lines (duplicates, lines with no customer ID, non-products and zero prices out), groups them into invoices and scores customers, and writes data/invoices.csv (43,807 rows) and data/customers.csv (5,832 rows), plus four charts in docs. DuckDB re-checks the key numbers in SQL. Power BI loads the two files into seven pages.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 528" width="1000" height="528" role="img" aria-label="Data flow, table by table: config.py reads the sales Excel file, two yearly sheets, 1,067,371 invoice lines. The notebook cleans them to 794,163 lines (duplicates, lines with no customer ID, non-products and zero prices out), groups them into invoices and scores customers, and writes data/invoices.csv (43,807 rows) and data/customers.csv (5,832 rows), plus four charts in docs. DuckDB re-checks the key numbers in SQL. Power BI loads the two files into seven pages.">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0B1220"/>
@@ -36,7 +36,7 @@
   <rect x="720" y="96" width="250" height="26" rx="13" fill="#22C55E"/><text x="845.0" y="114" class="layer" text-anchor="middle">3  Power BI</text>
   <text x="845.0" y="138" class="where" text-anchor="middle">import mode, 7 pages</text>
   <rect x="30" y="150" width="160" height="124" rx="10" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/>
-  <text x="42" y="180" class="name" font-weight="700">online_retail_II.xlsx</text>
+  <text x="42" y="180" class="name" font-weight="700">Sales Excel file</text>
   <text x="42" y="206" class="note">sheet Year 2009-2010</text>
   <text x="42" y="232" class="note">sheet Year 2010-2011</text>
   <text x="42" y="258" class="count">1,067,371 invoice lines</text>
