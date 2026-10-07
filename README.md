@@ -14,6 +14,8 @@
   <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter notebook">
 </p>
 
+> 📖 **New to data?** [The project explained, from zero](docs/explained.md): every word, every number and the interview questions, in plain words.
+
 <h3 align="center">Most of the revenue comes from a third of the customers, and good customers leave quietly.<br>This finds both, and lists who to call first.</h3>
 
 <p align="center">Everything that changes per client is in <code>config/client.yaml</code> and the file in <code>data/input/</code>.</p>
@@ -73,11 +75,11 @@ Before any scoring, the invoice lines were checked and cleaned, one rule at a ti
 
 ![Invoice lines left after each cleaning rule](docs/data-health.png)
 
-- **Duplicates:** 34,335 exact copies, most of them because the two yearly files overlap on 1 to 9 December 2010.
+- **Duplicates:** 34,335 exact copies, most of them because the two yearly sheets overlap on 1 to 9 December 2010.
 - **No customer ID:** these lines carry 13.6% of the revenue, but a customer who cannot be identified cannot be scored or called.
 - **Not a product:** postage, bank charges, marketplace fees and manual adjustments.
 - **Missing quantity or zero price:** free lines, or a number that could not be read.
-- **Returns are kept and taken off the spend.** Some very large orders were cancelled minutes later (one of 80,995 units); counting the order without the return would make that customer look like the best one.
+- **Returns are kept and taken off the spend.** Some very large orders were cancelled minutes later (one of 80,995 units); counting the order without the return would make that customer look like one of the 10 biggest spenders.
 
 ## 📊 The Power BI report
 
