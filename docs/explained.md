@@ -161,7 +161,7 @@ The other three groups, from the same cells: **Loyal** 779 customers (13.4%) wit
 | **section 1, sections 2, 3, sections 4, 5, section 8, section 6, section 7** | data-flow.svg | The notebook's numbered headings under each layer, not cell numbers. Section 2 (cleaning) is cells 4 to 6. Section 6 runs before section 8 but reads only the columns section 8 saves. |
 | **4 charts** | data-flow.svg | `data-health.png`, `segments.png`, `at-risk.png`, `cohorts.png`. |
 | **7 pages** | data-flow.svg | Overview, one page per group, and the return-by-starting-month page. |
-| **761 days** | data-model.svg | Rows in the DAX Date table: 1 Dec 2009 to 31 Dec 2011, every day of every month in the data (31 + 365 + 365). Worked out here; the table is built in Power BI. |
+| **1,095 days** | data-model.svg, data-flow.svg | Rows in the DAX Date table: 1 Jan 2009 to 31 Dec 2011 (365 + 365 + 365), the whole years set in `config/client.yaml` (`report.date_start`, `report.date_end`) around the data's 1 Dec 2009 to 9 Dec 2011, returns included. Worked out here; the table is built in Power BI. |
 | **14 measures, in 3 display folders** | data-model.svg, data-flow.svg | Counted in `powerbi/03-measures.dax`: 6 in Customers, 5 in Revenue, 3 in Cohorts. |
 | **1 and \*** | data-model.svg | One customer, or one day, links to many invoices. |
 | **Customer 16754, GBP 54,692.82, 373 days** | at-risk.png, top bar | The biggest at-risk customer: 29 orders, last one on 2 Dec 2010. Cell 15. |

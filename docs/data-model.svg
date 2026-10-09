@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 539" width="1000" height="539" role="img" aria-label="The Power BI model. Semantic layer: invoices (43,807 rows, one per invoice, purchase or return, key invoice) joins two dimensions, many to one: customers (5,832 rows, one per customer, key customer_id) on customer_id and Date (761 days, built in DAX) on invoice_date. The customers dimension carries the Gold layer's three scores and the segment as plain columns. Both relationships filter one way, from the dimension to invoices. Analytical layer: the _Measures table holds the 14 measures in 3 display folders.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 539" width="1000" height="539" role="img" aria-label="The Power BI model. Semantic layer: invoices (43,807 rows, one per invoice, purchase or return, key invoice) joins two dimensions, many to one: customers (5,832 rows, one per customer, key customer_id) on customer_id and Date (1,095 days, built in DAX) on invoice_date. The customers dimension carries the Gold layer's three scores and the segment as plain columns. Both relationships filter one way, from the dimension to invoices. Analytical layer: the _Measures table holds the 14 measures in 3 display folders.">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0 0 L10 5 L0 10 Z" fill="#64748B"/>
@@ -53,7 +53,7 @@
   <text x="52" y="466" class="col">segment_order</text><text x="268" y="466" class="key" fill="#B45309" text-anchor="end">Gold layer</text>
   <rect x="720" y="128" width="240" height="146" rx="10" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.5"/>
   <path d="M720 138 a10 10 0 0 1 10 -10 h220 a10 10 0 0 1 10 10 v36 h-240 Z" fill="#14B8A6"/>
-  <text x="732" y="148" class="name" font-weight="700" style="fill:#0B1220">Date</text><text x="732" y="165" class="count" style="fill:#0B1220">761 days, DAX, Semantic layer</text>
+  <text x="732" y="148" class="name" font-weight="700" style="fill:#0B1220">Date</text><text x="732" y="165" class="count" style="fill:#0B1220">1,095 days, DAX, Semantic layer</text>
   <text x="732" y="190" class="col">Date</text><text x="948" y="190" class="key" fill="#B45309" text-anchor="end">PK</text>
   <text x="732" y="213" class="col">Year</text>
   <text x="732" y="236" class="col">Month Start</text>

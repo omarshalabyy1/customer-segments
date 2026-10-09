@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 562" width="1000" height="562" role="img" aria-label="Data flow, table by table, left to right through six layers. Input: the sales Excel file, two yearly sheets. Bronze layer: raw, 1,067,371 invoice lines as received, headers mapped to standard names. Silver layer: 794,163 clean lines after 34,335 duplicates, 235,151 lines with no customer ID, 3,662 non-products and 60 lines with no quantity or price are counted and dropped, then 43,876 invoices. Gold layer: 5,832 customers with recency, frequency and spend scores and a group, and the at-risk call list of 631. Semantic layer: customers.csv (5,832 rows) and invoices.csv (43,807 rows, the invoices of scored customers), plus a Date table of 761 days built in DAX. Analytical layer: the cohort table (25 starting months) and 14 DAX measures. Reporting layer: seven Power BI pages and four README charts. A SQL check in DuckDB, not a layer, recomputes the key numbers.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 562" width="1000" height="562" role="img" aria-label="Data flow, table by table, left to right through six layers. Input: the sales Excel file, two yearly sheets. Bronze layer: raw, 1,067,371 invoice lines as received, headers mapped to standard names. Silver layer: 794,163 clean lines after 34,335 duplicates, 235,151 lines with no customer ID, 3,662 non-products and 60 lines with no quantity or price are counted and dropped, then 43,876 invoices. Gold layer: 5,832 customers with recency, frequency and spend scores and a group, and the at-risk call list of 631. Semantic layer: customers.csv (5,832 rows) and invoices.csv (43,807 rows, the invoices of scored customers), plus a Date table of 1,095 days built in DAX, its range fixed in config/client.yaml. Analytical layer: the cohort table (25 starting months) and 14 DAX measures. Reporting layer: seven Power BI pages and four README charts. A SQL check in DuckDB, not a layer, recomputes the key numbers.">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0 0 L10 5 L0 10 Z" fill="#64748B"/>
@@ -64,10 +64,10 @@
   <path d="M378 261.5 C384.0 261.5 384.0 174.0 390 174.0" class="edge" marker-end="url(#arrow)"/>
   <rect x="520" y="158" width="132" height="32" rx="7" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.4"/><text x="530" y="179" class="name">customers.csv</text><text x="644" y="179" class="count" text-anchor="end">5,832</text>
   <rect x="520" y="250" width="132" height="32" rx="7" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.4"/><text x="530" y="271" class="name">invoices.csv</text><text x="644" y="271" class="count" text-anchor="end">43,807</text>
-  <rect x="520" y="342" width="132" height="32" rx="7" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.4" stroke-dasharray="4 4"/><text x="530" y="363" class="name">Date, DAX</text><text x="644" y="363" class="count" text-anchor="end">761 days</text>
-  <text x="524" y="392" class="count" text-anchor="start">from the invoice</text>
-  <text x="524" y="408" class="count" text-anchor="start">dates' first and</text>
-  <text x="524" y="424" class="count" text-anchor="start">last month</text>
+  <rect x="520" y="342" width="132" height="32" rx="7" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.4" stroke-dasharray="4 4"/><text x="530" y="363" class="name">Date, DAX</text><text x="644" y="363" class="count" text-anchor="end">1,095 days</text>
+  <text x="524" y="392" class="count" text-anchor="start">range fixed in</text>
+  <text x="524" y="408" class="count" text-anchor="start">config/client.yaml,</text>
+  <text x="524" y="424" class="count" text-anchor="start">2009 to 2011</text>
   <path d="M508 174.0 H520" class="edge" marker-end="url(#arrow)"/>
   <path d="M378 270.5 H520" class="edge" marker-end="url(#arrow)"/>
   <path d="M508 183.0 C514 183.0 514 261.5 520 261.5" class="edge" marker-end="url(#arrow)"/>

@@ -1,38 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280" width="1000" height="280" role="img" aria-label="customer-segments: who brings the revenue, and who is slipping away. 30% of customers bring 77% of revenue, and 631 good customers have stopped buying. Two bars compare each group's share of customers with its share of revenue.">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0B1220"/>
-      <stop offset="0.55" stop-color="#10213A"/>
-      <stop offset="1" stop-color="#1E1B4B"/>
-    </linearGradient>
     <clipPath id="bars"><rect x="150" y="150" width="810" height="28" rx="7"/><rect x="150" y="198" width="810" height="28" rx="7"/></clipPath>
       <radialGradient id="jrGlowA" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#7C3AED" stop-opacity="0.4"/>
+      <stop offset="0" stop-color="#7C3AED" stop-opacity="0.08"/>
       <stop offset="1" stop-color="#7C3AED" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="jrGlowB" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#14B8A6" stop-opacity="0.3"/>
+      <stop offset="0" stop-color="#14B8A6" stop-opacity="0.08"/>
       <stop offset="1" stop-color="#14B8A6" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <style>
     text { font-family: "Segoe UI", -apple-system, Helvetica, Arial, sans-serif; }
-    .name { font-size: 32px; font-weight: 700; fill: #FFFFFF; }
-    .sub { font-size: 16px; fill: #CBD5E1; }
-    .result { font-size: 15px; fill: #FFFFFF; }
-    .hot { fill: #FB923C; font-weight: 700; }
-    .lab { font-size: 14px; font-weight: 700; fill: #E2E8F0; }
+    .name { font-size: 32px; font-weight: 700; fill: #0E1630; }
+    .sub { font-size: 16px; fill: #475569; }
+    .result { font-size: 15px; fill: #0E1630; }
+    .hot { fill: #C2410C; font-weight: 700; }
+    .lab { font-size: 14px; font-weight: 700; fill: #0E1630; }
     .in { font-size: 13px; font-weight: 700; }
-    .leg { font-size: 12.5px; fill: #CBD5E1; }
+    .leg { font-size: 12.5px; fill: #475569; }
       .wave { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 2 10; animation: flow 6s linear infinite; }
     @keyframes flow { to { stroke-dashoffset: -120; } }
   </style>
 
-  <rect width="1000" height="280" rx="22" fill="url(#bg)"/>
+  <rect x="1" y="1" width="998" height="278" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
   <circle cx="880" cy="60" r="190" fill="url(#jrGlowA)"/>
   <circle cx="160" cy="260" r="170" fill="url(#jrGlowB)"/>
-  <path class="wave" stroke="#2DD4BF" stroke-opacity="0.5" d="M24 269 C 200 264, 330 273, 500 269 S 800 265, 976 269"/>
-  <path class="wave" stroke="#A78BFA" stroke-opacity="0.4" style="animation-duration:9s" d="M40 275 C 220 271, 360 278, 520 275 S 820 272, 960 275"/>
+  <path class="wave" stroke="#14B8A6" stroke-opacity="0.5" d="M24 269 C 200 264, 330 273, 500 269 S 800 265, 976 269"/>
+  <path class="wave" stroke="#8B5CF6" stroke-opacity="0.4" style="animation-duration:9s" d="M40 275 C 220 271, 360 278, 520 275 S 820 272, 960 275"/>
 
   <text x="40" y="64" class="name">customer-segments</text>
   <text x="40" y="94" class="sub">Who brings the revenue, and who is slipping away</text>

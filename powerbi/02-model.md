@@ -14,7 +14,7 @@ customers (1) ──► (*) invoices (*) ◄── (1) Date
 |---|---|---|---|---|
 | `invoices` | invoice (purchase or return) | `invoice` | 43,807 in the demo | Power Query |
 | `customers` | customer | `customer_id` | 5,832 in the demo | Power Query |
-| `Date` | day, from the first to the last month in the data | `Date` | 761 in the demo | DAX calculated table (below) |
+| `Date` | day, `report.date_start` to `report.date_end` in `config/client.yaml` | `Date` | 1,095 in the demo | DAX calculated table (below) |
 | `_Measures` | holds the measures only | none | 0 | Enter data |
 
 ## The Date table
@@ -23,11 +23,8 @@ customers (1) ──► (*) invoices (*) ◄── (1) Date
 
 ```dax
 Date =
-VAR _first = MIN ( invoices[invoice_date] )
-VAR _last = MAX ( invoices[invoice_date] )
-RETURN
 ADDCOLUMNS (
-    CALENDAR ( DATE ( YEAR ( _first ), MONTH ( _first ), 1 ), EOMONTH ( _last, 0 ) ),
+    CALENDAR ( DATE ( 2009, 1, 1 ), DATE ( 2011, 12, 31 ) ),
     "Year", YEAR ( [Date] ),
     "Month Start", DATE ( YEAR ( [Date] ), MONTH ( [Date] ), 1 ),
     "Month", FORMAT ( [Date], "mmm yyyy" )
@@ -36,7 +33,7 @@ ADDCOLUMNS (
 
 Then select the table, **Table tools → Mark as date table**, and pick the `Date` column.
 
-Why: one row per day across the whole data range lets the revenue-by-month chart show every month, and marking it lets time intelligence work if it is added later. It runs from the first day of the first month to the last day of the last month, so every month is complete.
+Why: one row per day across the whole data range lets the revenue-by-month chart show every month, and marking it lets time intelligence work if it is added later. The two dates are `report.date_start` and `report.date_end` in `config/client.yaml`, typed here, never read from `invoices`, so the Date table is not built from the fact. They are whole years around every invoice line, returns included (the demo runs 1 Dec 2009 to 9 Dec 2011), so every month is complete; the notebook stops if a line falls outside. Months with no invoices do not show on the revenue-by-month chart, because its axis is categorical.
 
 No calculated columns. The scores, groups and month offsets are computed once in the notebook and loaded as plain columns.
 

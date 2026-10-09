@@ -13,7 +13,7 @@ REQUIRED = [
     "columns.price", "columns.customer_id", "columns.country",
     "rules.return_invoice_prefix", "rules.product_code_pattern", "rules.score_levels",
     "rules.still_buying_min_recency_score", "rules.good_customer_min_frequency_plus_spend",
-    "report.title",
+    "report.title", "report.date_start", "report.date_end",
     "report.colours.data", "report.colours.text", "report.colours.muted",
     "report.colours.page", "report.colours.line", "report.colours.danger",
 ]

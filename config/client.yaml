@@ -27,6 +27,8 @@ rules:
 
 report:
   title: Customer Segments            # the Power BI theme name
+  date_start: 2009-01-01              # the Power BI Date table runs from this day (powerbi/02-model.md): whole years
+  date_end: 2011-12-31                # around every invoice line, returns included; the notebook stops if one falls outside
   colours:                            # the Power BI theme (python theme.py) and the notebook charts
     data: ["#2563EB", "#0E1630", "#8DB0FF", "#4A5675", "#1D4FD7", "#C7D7FE"]   # 1st champions, 3rd loyal, 6th new
     text: "#0E1630"
