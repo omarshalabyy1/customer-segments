@@ -40,6 +40,7 @@ Think of it like a gym's member list. Members who came this week and come often 
 | **Median** | The middle value when you sort a list. Half the customers are above it, half below. It is not pulled up by one huge spender the way an average is. |
 | **Cohort, starting month** | All customers whose first purchase fell in the same month. "The Jan 2010 cohort" is everyone who first bought in January 2010. |
 | **Month offset** | How many calendar months after the starting month a purchase happened. 0 is the starting month itself, 1 is the next month. |
+| **The six layers** | The names of the steps, in order. **Bronze layer:** the input file as received. **Silver layer:** clean rows, one row per invoice. **Gold layer:** the business rules, here the scores and the groups. **Semantic layer:** the fact and dimension tables Power BI loads. **Analytical layer:** the aggregates and KPIs, here the cohort table and the DAX measures. **Reporting layer:** the Power BI pages and the charts. The README's "For engineers" table says where each one is. |
 | **Data health check** | The cleaning rules, one at a time, with how many lines each removes. Shown in `docs/data-health.png`. |
 | **Exact duplicate** | A line that appears twice with every column the same. |
 | **Product code** | The code of what was sold, for example `85048`. A real product has a code that starts with five digits; postage (`POST`), bank charges and manual adjustments (`M`) do not. |
@@ -71,15 +72,15 @@ Run in this order (the commands are in the README's "Run it" section). There is 
 | 0 | `requirements.txt` | The Python libraries, with their versions. `pip install -r requirements.txt` installs them. |
 | 1 | `data/demo/download.py` | Downloads the demo input file into `data/input/` (see Data in the README). A client copies their own file there instead. |
 | 2 | `config/client.yaml`, `config.py` | Hold every setting. `load_config()` stops if a setting is missing. `read_transactions()` reads the file (every sheet), renames the client's headers to standard names, and stops with one line if the file, a column or a date is wrong. |
-| 3 | `analysis/analysis.ipynb` cells 3 to 6 | Read the 1,067,371 lines and clean them: the data health check. |
-| 4 | cell 8 | Adds the lines up to one row per invoice. |
-| 5 | cell 10 | Scores every customer on recency, frequency and spend. |
-| 6 | cells 12 to 15 | Sorts customers into the five groups and draws `segments.png` and the call list `at-risk.png`. |
-| 7 | cells 17 and 18 | Cohorts: how many of each month's new customers come back. Draws `cohorts.png`. |
-| 8 | cell 20 | Recomputes the key numbers in SQL with DuckDB. If any differs, the notebook stops. |
-| 9 | cell 22 | Writes `data/invoices.csv` and `data/customers.csv`, the two tables Power BI loads. |
+| 3 | `analysis/analysis.ipynb` cells 3 to 6 | Bronze and Silver layers: read the 1,067,371 lines and clean them, the data health check. The removed lines are counted, then dropped; no file keeps them. |
+| 4 | cell 8 | Silver layer: adds the lines up to one row per invoice. |
+| 5 | cell 10 | Gold layer: scores every customer on recency, frequency and spend. |
+| 6 | cells 12 to 15 | Gold layer: sorts customers into the five groups and draws `segments.png` and the call list `at-risk.png`. |
+| 7 | cells 17 and 18 | Analytical layer: cohorts, how many of each month's new customers come back. Draws `cohorts.png`. |
+| 8 | cell 20 | Recomputes the key numbers in SQL with DuckDB. If any differs, the notebook stops. This check is not a layer. |
+| 9 | cell 22 | Semantic layer: writes `data/invoices.csv` and `data/customers.csv`, the two tables Power BI loads. |
 | 10 | `theme.py` | Writes the Power BI theme (`powerbi/05-theme.json`) from the colours in `client.yaml`. |
-| 11 | `powerbi/` | Step-by-step instructions to build the 7-page report: queries, model, the 14 measures, pages, and the numbers each page must show (`06-checks.md`). |
+| 11 | `powerbi/` | Step-by-step instructions to build the 7-page report: queries, model, the 14 measures (the rest of the Analytical layer), pages (the Reporting layer), and the numbers each page must show (`06-checks.md`). |
 
 ### The two questions
 
@@ -149,15 +150,19 @@ The other three groups, from the same cells: **Loyal** 779 customers (13.4%) wit
 | **1,772 (30%), 779, 364, 631, 2,286** | mental-model.svg | Customers per group, from cell 12. |
 | **77%, 3%, 1%, 12%, 7%** | mental-model.svg | Share of revenue per group, rounded from 77.1%, 3.4%, 0.8%, 12.1%, 6.6%. |
 | **1 to 4, F + M 6 or more, R 3 or 4, 95 days** | mental-model.svg | The scores and the two questions, as in section 3. |
-| **01 to 05** | how-it-works.svg | The five steps: clean, score, group, cohorts, report. "Steps 1 to 4" are the notebook's. |
+| **01 to 06** | how-it-works.svg | The six layers: Bronze, Silver, Gold, Semantic, Analytical, Reporting. The notebook builds layers 1 to 4 and the cohort table; Power BI adds the measures and the pages. |
 | **1,067,371, −34,335, −235,151, −3,662, −60, 794,163** | data-flow.svg | The data health check, from cell 5. |
+| **43,876** | data-flow.svg | Invoices in the Silver layer, before the 69 invoices of customers who are not scored are left out (see below). Cell 8. |
+| **631** | data-flow.svg | The at-risk call list in the Gold layer. Cell 15. |
+| **20 with spend ≤ 0** | data-flow.svg | Customers whose returns cancel out their purchases, left out of the Gold layer. Cell 10. |
+| **25 rows** | data-flow.svg | The cohort table in the Analytical layer: one row per starting month, Dec 2009 to Dec 2011. Cell 17. |
 | **43,807** | data-flow.svg, data-model.svg | Rows in `invoices.csv`: one per invoice of a scored customer (36,573 purchases + 7,234 returns). |
 | **5,832** | data-flow.svg, data-model.svg | Rows in `customers.csv`: one per scored customer. |
-| **section 2, sections 3 to 7, section 8** | data-flow.svg | The notebook's numbered headings, not cell numbers. Section 2 (cleaning) is cells 4 to 6. |
+| **section 1, sections 2, 3, sections 4, 5, section 8, section 6, section 7** | data-flow.svg | The notebook's numbered headings under each layer, not cell numbers. Section 2 (cleaning) is cells 4 to 6. Section 6 runs before section 8 but reads only the columns section 8 saves. |
 | **4 charts** | data-flow.svg | `data-health.png`, `segments.png`, `at-risk.png`, `cohorts.png`. |
 | **7 pages** | data-flow.svg | Overview, one page per group, and the return-by-starting-month page. |
 | **761 days** | data-model.svg | Rows in the DAX Date table: 1 Dec 2009 to 31 Dec 2011, every day of every month in the data (31 + 365 + 365). Worked out here; the table is built in Power BI. |
-| **14 measures, in 3 display folders** | data-model.svg | Counted in `powerbi/03-measures.dax`: 6 in Customers, 5 in Revenue, 3 in Cohorts. |
+| **14 measures, in 3 display folders** | data-model.svg, data-flow.svg | Counted in `powerbi/03-measures.dax`: 6 in Customers, 5 in Revenue, 3 in Cohorts. |
 | **1 and \*** | data-model.svg | One customer, or one day, links to many invoices. |
 | **Customer 16754, GBP 54,692.82, 373 days** | at-risk.png, top bar | The biggest at-risk customer: 29 orders, last one on 2 Dec 2010. Cell 15. |
 | **about 21%** | cohorts.png title | 20.8%, rounded. |
@@ -166,7 +171,7 @@ The other three groups, from the same cells: **Loyal** 779 customers (13.4%) wit
 
 - **Cell 8 says 36,594 purchases and 43,876 invoices; the README says 36,573 and `invoices.csv` has 43,807.** The 69 missing invoices (21 purchases, 48 returns) belong to 43 customers whose returns cancel out everything they bought. 20 of them bought something and are dropped in cell 10 ("20 customers ... are left out"). The other 23 only have returns, so they never enter the customer table. Cell 17 then keeps only the invoices of scored customers. The 43, 21 and 48 were counted here from the input file.
 - **Cell 6 gives 17,068,568 − 709,953 = 16,358,615, but the revenue is 16,361,570.13.** The same 43 customers had a net spend of GBP −2,955.59. Taking them out raises the total: 16,358,614.54 + 2,955.59 = 16,361,570.13.
-- **Row counts shrink at every layer, on purpose.** 1,067,371 lines → 794,163 clean lines → 43,876 invoices → 43,807 for scored customers → 5,832 customers. Customers: 5,875 in the clean lines → 5,852 with a purchase → 5,832 with spend above zero.
+- **Row counts shrink from layer to layer, on purpose.** 1,067,371 lines (Bronze layer) → 794,163 clean lines → 43,876 invoices (Silver layer) → 5,832 customers (Gold layer) → 43,807 invoices for scored customers and 5,832 customers (Semantic layer). Customers: 5,875 in the clean lines → 5,852 with a purchase → 5,832 with spend above zero.
 - **The quarters are not exactly equal.** Frequency scores 1 to 4 hold 1,599, 1,603, 1,340 and 1,290 customers. Every customer with one order gets the same score, and there are many of them. Recency and spend are close to even (1,465 / 1,452 / 1,475 / 1,440 and about 1,458 each). Counted here from `customers.csv`.
 - **The score ranges in cell 10 seem to touch** (844 tops spend score 2 and starts score 3). The table rounds spend to whole pounds; the real values do not overlap.
 - **30 + 13 + 6 + 11 + 39 = 99, not 100**, in the header. Each share is rounded. The exact shares add up to 100.0%.

@@ -29,7 +29,7 @@ A shop treats every customer the same: the same emails, the same discounts, the 
 Every customer is scored on three things, and two plain questions sort them into five groups. Each group gets its own action, and the at-risk group becomes a call list, biggest spender first.
 
 <p align="center">
-  <img width="100%" src="docs/how-it-works.svg" alt="How it works: 01 Clean, duplicates, unknown customers and fees out, returns taken off spend; 02 Score, recency, frequency and spend, each scored 1 to 4; 03 Group, champions, loyal, new, at risk and lost; 04 Cohorts, how many of each month's new customers come back; 05 Report, a Power BI page per group with who to call first.">
+  <img width="100%" src="docs/how-it-works.svg" alt="How it works, in six layers: 01 Bronze layer, the invoice file as received; 02 Silver layer, duplicates, unknown customers and fees out, one row per invoice; 03 Gold layer, recency, frequency and spend each scored 1 to 4, five groups and the at-risk list; 04 Semantic layer, invoices.csv and customers.csv, the two tables Power BI loads; 05 Analytical layer, cohorts and 14 DAX measures; 06 Reporting layer, a Power BI page per group with who to call first.">
 </p>
 
 <p align="center">
@@ -126,14 +126,25 @@ config/client.yaml        every client value
 config.py                 load_config() and the input file check
 analysis/analysis.ipynb   every number, chart and SQL check
 data/input/               the client's transactions file (README: its columns)
-data/customers.csv        one row per customer: scores and group
-data/invoices.csv         one row per invoice: purchases and returns
+data/customers.csv        Semantic layer: one row per customer, with the Gold scores and group
+data/invoices.csv         Semantic layer: one row per invoice, purchases and returns
 docs/                     the diagrams and charts in this README
 powerbi/                  the Power BI build, step by step
 theme.py                  writes powerbi/05-theme.json from the config
 ```
 
 ## 🏗️ For engineers
+
+The steps are named after the six layers. There is no database: each layer is a file, a notebook section or a part of the Power BI report.
+
+| Layer | In this repo |
+|---|---|
+| Bronze layer | The client's file in `data/input/`, kept as received; notebook section 1 reads every line |
+| Silver layer | Notebook sections 2 and 3: the data health check, then one row per invoice |
+| Gold layer | Notebook sections 4 and 5: recency, frequency and spend scores, the five groups and the at-risk list |
+| Semantic layer | `data/invoices.csv` (fact) and `data/customers.csv` (dimension, carrying the Gold scores and group), written in section 8; Power BI adds the Date table |
+| Analytical layer | The cohort table (notebook section 6) and the 14 DAX measures in `powerbi/03-measures.dax` |
+| Reporting layer | The seven Power BI pages (`powerbi/04-pages.md`) and the charts in this README |
 
 Every step from the input file to the Power BI pages, with the row count of each table after one run:
 

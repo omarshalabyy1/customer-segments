@@ -1,83 +1,100 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 528" width="1000" height="528" role="img" aria-label="Data flow, table by table: config.py reads the sales Excel file, two yearly sheets, 1,067,371 invoice lines. The notebook cleans them to 794,163 lines (duplicates, lines with no customer ID, non-products and zero prices out), groups them into invoices and scores customers, and writes data/invoices.csv (43,807 rows) and data/customers.csv (5,832 rows), plus four charts in docs. DuckDB re-checks the key numbers in SQL. Power BI loads the two files into seven pages.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 562" width="1000" height="562" role="img" aria-label="Data flow, table by table, left to right through six layers. Input: the sales Excel file, two yearly sheets. Bronze layer: raw, 1,067,371 invoice lines as received, headers mapped to standard names. Silver layer: 794,163 clean lines after 34,335 duplicates, 235,151 lines with no customer ID, 3,662 non-products and 60 lines with no quantity or price are counted and dropped, then 43,876 invoices. Gold layer: 5,832 customers with recency, frequency and spend scores and a group, and the at-risk call list of 631. Semantic layer: customers.csv (5,832 rows) and invoices.csv (43,807 rows, the invoices of scored customers), plus a Date table of 761 days built in DAX. Analytical layer: the cohort table (25 starting months) and 14 DAX measures. Reporting layer: seven Power BI pages and four README charts. A SQL check in DuckDB, not a layer, recomputes the key numbers.">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0B1220"/>
-      <stop offset="0.55" stop-color="#10213A"/>
-      <stop offset="1" stop-color="#1E1B4B"/>
-    </linearGradient>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0 0 L10 5 L0 10 Z" fill="#64748B"/>
     </marker>
   </defs>
   <style>
     text { font-family: "Segoe UI", -apple-system, Helvetica, Arial, sans-serif; }
-    .title { font-size: 21px; font-weight: 700; fill: #FFFFFF; }
-    .sub { font-size: 13.5px; fill: #CBD5E1; }
-    .layer { font-size: 14px; font-weight: 700; fill: #0B1220; }
-    .where { font-size: 12px; fill: #94A3B8; }
-    .name { font-size: 13px; fill: #F1F5F9; }
-    .count { font-size: 11.5px; fill: #94A3B8; }
-    .note { font-size: 12px; fill: #CBD5E1; }
-    .col { font-size: 12.5px; fill: #E2E8F0; }
+    .title { font-size: 21px; font-weight: 700; fill: #0E1630; }
+    .sub { font-size: 13.5px; fill: #475569; }
+    .layer { font-size: 13px; font-weight: 700; }
+    .where { font-size: 11.5px; fill: #506078; }
+    .name { font-size: 13px; fill: #0E1630; }
+    .count { font-size: 11.5px; fill: #506078; }
+    .col { font-size: 12.5px; fill: #0E1630; }
     .key { font-size: 11px; font-weight: 700; }
+    .step { font-size: 15px; font-weight: 700; fill: #0E1630; }
+    .num { font-size: 12px; font-weight: 700; }
+    .desc { font-size: 12.5px; fill: #475569; }
     .edge { fill: none; stroke: #64748B; stroke-width: 1.4; }
   </style>
-  <rect width="1000" height="528" rx="22" fill="url(#bg)"/>
-  <text x="40" y="50" class="title">Data flow, table by table</text>
-  <text x="40" y="74" class="sub">From the client's invoice file to the two tables Power BI loads. config.py reads the file, the notebook does the rest.</text>
-  <rect x="30" y="96" width="160" height="26" rx="13" fill="#94A3B8"/><text x="110.0" y="114" class="layer" text-anchor="middle">Input file</text>
-  <text x="110.0" y="138" class="where" text-anchor="middle">data/input, read by config.py</text>
-  <rect x="212" y="96" width="150" height="26" rx="13" fill="#0EA5E9"/><text x="287.0" y="114" class="layer" text-anchor="middle">1  Clean</text>
-  <text x="287.0" y="138" class="where" text-anchor="middle">notebook, section 2</text>
-  <rect x="384" y="96" width="132" height="26" rx="13" fill="#14B8A6"/><text x="450.0" y="114" class="layer" text-anchor="middle">2  Score and group</text>
-  <text x="450.0" y="138" class="where" text-anchor="middle">notebook, sections 3 to 7</text>
-  <rect x="546" y="96" width="150" height="26" rx="13" fill="#94A3B8"/><text x="621.0" y="114" class="layer" text-anchor="middle">Output files</text>
-  <text x="621.0" y="138" class="where" text-anchor="middle">written in section 8</text>
-  <rect x="720" y="96" width="250" height="26" rx="13" fill="#22C55E"/><text x="845.0" y="114" class="layer" text-anchor="middle">3  Power BI</text>
-  <text x="845.0" y="138" class="where" text-anchor="middle">import mode, 7 pages</text>
-  <rect x="30" y="150" width="160" height="124" rx="10" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/>
-  <text x="42" y="180" class="name" font-weight="700">Sales Excel file</text>
-  <text x="42" y="206" class="note">sheet Year 2009-2010</text>
-  <text x="42" y="232" class="note">sheet Year 2010-2011</text>
-  <text x="42" y="258" class="count">1,067,371 invoice lines</text>
-  <rect x="212" y="196" width="150" height="32" rx="7" fill="#13233D" stroke="#0EA5E9" stroke-opacity="0.7"/><text x="222" y="217" class="name">lines</text><text x="354" y="217" class="count" text-anchor="end">794,163</text>
-  <path d="M190 212.0 H211" class="edge" marker-end="url(#arrow)"/>
-  <text x="216" y="256" class="count">-34,335 duplicates</text>
-  <text x="216" y="274" class="count">-235,151 no customer ID</text>
-  <text x="216" y="292" class="count">-3,662 not a product</text>
-  <text x="216" y="310" class="count">-60 zero price or no quantity</text>
-  <rect x="384" y="150" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="171" class="name">invoices</text>
-  <rect x="384" y="242" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="263" class="name">customers</text>
-  <rect x="384" y="334" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7"/><text x="394" y="355" class="name">retention</text>
-  <rect x="384" y="426" width="132" height="32" rx="7" fill="#13233D" stroke="#14B8A6" stroke-opacity="0.7" stroke-dasharray="4 4"/><text x="394" y="447" class="name">SQL check, DuckDB</text>
-  <text x="450" y="418" class="count" text-anchor="middle">reads invoices, customers</text>
-  <path d="M362 212.0 H368 V166.0 H383" class="edge" marker-end="url(#arrow)"/>
-  <line x1="430" y1="182" x2="430" y2="240" class="edge" marker-end="url(#arrow)"/>
-  <line x1="470" y1="242" x2="470" y2="184" class="edge" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
-  <line x1="450" y1="274" x2="450" y2="332" class="edge" marker-end="url(#arrow)"/>
-  <rect x="546" y="150" width="150" height="32" rx="7" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/><text x="556" y="171" class="name">invoices.csv</text><text x="688" y="171" class="count" text-anchor="end">43,807</text>
-  <rect x="546" y="242" width="150" height="32" rx="7" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/><text x="556" y="263" class="name">customers.csv</text><text x="688" y="263" class="count" text-anchor="end">5,832</text>
-  <rect x="546" y="315.6" width="150" height="142.39999999999998" rx="10" fill="#13233D" stroke="#94A3B8" stroke-opacity="0.7"/>
-  <text x="558" y="341.6" class="name" font-weight="700">docs/, 4 charts</text>
-  <text x="558" y="363.6" class="note">data-health.png</text>
-  <text x="558" y="385.6" class="note">segments.png</text>
-  <text x="558" y="407.6" class="note">at-risk.png</text>
-  <text x="558" y="429.6" class="note">cohorts.png</text>
-  <path d="M516 166.0 H545" class="edge" marker-end="url(#arrow)"/>
-  <path d="M516 258.0 H545" class="edge" marker-end="url(#arrow)"/>
-  <path d="M516 266.0 H524 V335.6 H545" class="edge" marker-end="url(#arrow)"/>
-  <path d="M516 350.0 H530 V379.6 H545" class="edge" marker-end="url(#arrow)"/>
-  <path d="M287 324 V474 H620 V460" class="edge" marker-end="url(#arrow)"/>
-  <path d="M696 166.0 H708 V258.0 H696" class="edge" stroke="#94A3B8"/>
-  <line x1="708" y1="212.0" x2="724" y2="212.0" class="edge" stroke="#22C55E" marker-end="url(#arrow)"/>
-  <rect x="726" y="150" width="244" height="308" rx="12" fill="#13233D" stroke="#22C55E" stroke-opacity="0.7"/>
-  <text x="848" y="172" class="count" text-anchor="middle">+ Date table, built in DAX</text>
-  <rect x="740" y="186" width="216" height="30" rx="15" fill="#166534"/><text x="848" y="206" class="name" text-anchor="middle">Overview</text>
-  <rect x="740" y="224" width="216" height="30" rx="15" fill="#166534"/><text x="848" y="244" class="name" text-anchor="middle">Champions</text>
-  <rect x="740" y="262" width="216" height="30" rx="15" fill="#166534"/><text x="848" y="282" class="name" text-anchor="middle">Loyal</text>
-  <rect x="740" y="300" width="216" height="30" rx="15" fill="#166534"/><text x="848" y="320" class="name" text-anchor="middle">New</text>
-  <rect x="740" y="338" width="216" height="30" rx="15" fill="#166534"/><text x="848" y="358" class="name" text-anchor="middle">At risk</text>
-  <rect x="740" y="376" width="216" height="30" rx="15" fill="#166534"/><text x="848" y="396" class="name" text-anchor="middle">Lost</text>
-  <rect x="740" y="414" width="216" height="30" rx="15" fill="#166534"/><text x="848" y="434" class="name" text-anchor="middle">Return by starting month</text>
-  <text x="40" y="504" class="where">dashed: customers sets month_offset on invoices and keeps only scored customers; DuckDB recomputes the key numbers in SQL and the notebook stops on any difference</text>
+  <rect x="1" y="1" width="998" height="560" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <text x="40" y="52" class="title">Data flow, table by table</text>
+  <text x="40" y="76" class="sub">From the client's invoice file to the Power BI pages, through the six layers. config.py reads the file, the notebook does the rest.</text>
+  <rect x="16" y="100" width="84" height="26" rx="13" fill="#94A3B8"/><text x="58.0" y="117.5" class="layer" text-anchor="middle" style="fill:#0B1220">Input</text>
+  <text x="58.0" y="144" class="where" text-anchor="middle">data/input</text>
+  <rect x="112" y="100" width="104" height="26" rx="13" fill="#3B82F6"/><text x="164.0" y="117.5" class="layer" text-anchor="middle" style="fill:#0B1220">Bronze layer</text>
+  <text x="164.0" y="144" class="where" text-anchor="middle">section 1</text>
+  <rect x="228" y="100" width="150" height="26" rx="13" fill="#0EA5E9"/><text x="303.0" y="117.5" class="layer" text-anchor="middle" style="fill:#0B1220">Silver layer</text>
+  <text x="303.0" y="144" class="where" text-anchor="middle">sections 2, 3</text>
+  <rect x="390" y="100" width="118" height="26" rx="13" fill="#F59E0B"/><text x="449.0" y="117.5" class="layer" text-anchor="middle" style="fill:#0B1220">Gold layer</text>
+  <text x="449.0" y="144" class="where" text-anchor="middle">sections 4, 5</text>
+  <rect x="520" y="100" width="132" height="26" rx="13" fill="#14B8A6"/><text x="586.0" y="117.5" class="layer" text-anchor="middle" style="fill:#0B1220">Semantic layer</text>
+  <text x="586.0" y="144" class="where" text-anchor="middle">section 8, CSV</text>
+  <rect x="664" y="100" width="140" height="26" rx="13" fill="#A855F7"/><text x="734.0" y="117.5" class="layer" text-anchor="middle" style="fill:#FFFFFF">Analytical layer</text>
+  <text x="734.0" y="144" class="where" text-anchor="middle">section 6, DAX</text>
+  <rect x="816" y="100" width="168" height="26" rx="13" fill="#22C55E"/><text x="900.0" y="117.5" class="layer" text-anchor="middle" style="fill:#0B1220">Reporting layer</text>
+  <text x="900.0" y="144" class="where" text-anchor="middle">Power BI, README</text>
+  <rect x="16" y="158" width="84" height="78" rx="10" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.4"/>
+  <text x="24" y="180" class="name" font-weight="700">Sales Excel</text>
+  <text x="24" y="198" class="name" font-weight="700">file</text>
+  <text x="24" y="216" class="count">2 yearly sheets</text>
+  <rect x="112" y="158" width="104" height="32" rx="7" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.4"/><text x="122" y="179" class="name">raw</text><text x="208" y="179" class="count" text-anchor="end">1,067,371</text>
+  <text x="116" y="208" class="count" text-anchor="start">every line kept,</text>
+  <text x="116" y="224" class="count" text-anchor="start">headers mapped</text>
+  <text x="116" y="240" class="count" text-anchor="start">by config.py</text>
+  <path d="M100 174.0 H112" class="edge" marker-end="url(#arrow)"/>
+  <rect x="228" y="158" width="150" height="32" rx="7" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.4"/><text x="238" y="179" class="name">lines</text><text x="370" y="179" class="count" text-anchor="end">794,163</text>
+  <rect x="228" y="250" width="150" height="32" rx="7" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.4"/><text x="238" y="271" class="name">invoices</text><text x="370" y="271" class="count" text-anchor="end">43,876</text>
+  <path d="M216 174.0 H228" class="edge" marker-end="url(#arrow)"/>
+  <path d="M303.0 190 V250" class="edge" marker-end="url(#arrow)"/>
+  <text x="232" y="302" class="count" text-anchor="start">refused, counted, dropped:</text>
+  <text x="232" y="318" class="count" text-anchor="start">−34,335 duplicates</text>
+  <text x="232" y="334" class="count" text-anchor="start">−235,151 no customer ID</text>
+  <text x="232" y="350" class="count" text-anchor="start">−3,662 not a product</text>
+  <text x="232" y="366" class="count" text-anchor="start">−60 no quantity or price</text>
+  <rect x="390" y="158" width="118" height="32" rx="7" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.4"/><text x="400" y="179" class="name">customers</text><text x="500" y="179" class="count" text-anchor="end">5,832</text>
+  <rect x="390" y="222.39999999999998" width="118" height="32" rx="7" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.4"/><text x="400" y="243.39999999999998" class="name">at_risk</text><text x="500" y="243.39999999999998" class="count" text-anchor="end">631</text>
+  <path d="M449.0 190 V222.39999999999998" class="edge" marker-end="url(#arrow)"/>
+  <text x="394" y="302" class="count" text-anchor="start">r, f, m scores,</text>
+  <text x="394" y="318" class="count" text-anchor="start">segment, cohort</text>
+  <text x="394" y="334" class="count" text-anchor="start">month; 20 with</text>
+  <text x="394" y="350" class="count" text-anchor="start">spend ≤ 0 left out</text>
+  <path d="M378 261.5 C384.0 261.5 384.0 174.0 390 174.0" class="edge" marker-end="url(#arrow)"/>
+  <rect x="520" y="158" width="132" height="32" rx="7" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.4"/><text x="530" y="179" class="name">customers.csv</text><text x="644" y="179" class="count" text-anchor="end">5,832</text>
+  <rect x="520" y="250" width="132" height="32" rx="7" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.4"/><text x="530" y="271" class="name">invoices.csv</text><text x="644" y="271" class="count" text-anchor="end">43,807</text>
+  <rect x="520" y="342" width="132" height="32" rx="7" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.4" stroke-dasharray="4 4"/><text x="530" y="363" class="name">Date, DAX</text><text x="644" y="363" class="count" text-anchor="end">761 days</text>
+  <text x="524" y="392" class="count" text-anchor="start">from the invoice</text>
+  <text x="524" y="408" class="count" text-anchor="start">dates' first and</text>
+  <text x="524" y="424" class="count" text-anchor="start">last month</text>
+  <path d="M508 174.0 H520" class="edge" marker-end="url(#arrow)"/>
+  <path d="M378 270.5 H520" class="edge" marker-end="url(#arrow)"/>
+  <path d="M508 183.0 C514 183.0 514 261.5 520 261.5" class="edge" marker-end="url(#arrow)"/>
+  <rect x="664" y="158" width="140" height="32" rx="7" fill="#FFFFFF" stroke="#A855F7" stroke-width="1.4"/><text x="674" y="179" class="name">retention</text><text x="796" y="179" class="count" text-anchor="end">25 rows</text>
+  <rect x="664" y="250" width="140" height="32" rx="7" fill="#FFFFFF" stroke="#A855F7" stroke-width="1.4"/><text x="674" y="271" class="name">DAX measures</text><text x="796" y="271" class="count" text-anchor="end">14</text>
+  <text x="668" y="208" class="count" text-anchor="start">cohort table:</text>
+  <text x="668" y="224" class="count" text-anchor="start">starting month by</text>
+  <text x="668" y="240" class="count" text-anchor="start">months after</text>
+  <text x="668" y="300" class="count" text-anchor="start">3 display folders,</text>
+  <text x="668" y="316" class="count" text-anchor="start">_Measures table</text>
+  <path d="M652 174.0 H658 V266.0 H652" class="edge" stroke="#14B8A6"/>
+  <path d="M658 174.0 H664" class="edge" marker-end="url(#arrow)"/>
+  <path d="M658 266.0 H664" class="edge" marker-end="url(#arrow)"/>
+  <rect x="816" y="158" width="168" height="244" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.4"/>
+  <text x="828" y="180" class="name" font-weight="700">Power BI, 7 pages</text>
+  <rect x="828" y="190" width="144" height="24" rx="12" fill="#166534"/><text x="900.0" y="206.5" class="name" text-anchor="middle" style="fill:#FFFFFF;font-size:12px">Overview</text>
+  <rect x="828" y="220" width="144" height="24" rx="12" fill="#166534"/><text x="900.0" y="236.5" class="name" text-anchor="middle" style="fill:#FFFFFF;font-size:12px">Champions</text>
+  <rect x="828" y="250" width="144" height="24" rx="12" fill="#166534"/><text x="900.0" y="266.5" class="name" text-anchor="middle" style="fill:#FFFFFF;font-size:12px">Loyal</text>
+  <rect x="828" y="280" width="144" height="24" rx="12" fill="#166534"/><text x="900.0" y="296.5" class="name" text-anchor="middle" style="fill:#FFFFFF;font-size:12px">New</text>
+  <rect x="828" y="310" width="144" height="24" rx="12" fill="#166534"/><text x="900.0" y="326.5" class="name" text-anchor="middle" style="fill:#FFFFFF;font-size:12px">At risk</text>
+  <rect x="828" y="340" width="144" height="24" rx="12" fill="#166534"/><text x="900.0" y="356.5" class="name" text-anchor="middle" style="fill:#FFFFFF;font-size:12px">Lost</text>
+  <rect x="828" y="370" width="144" height="24" rx="12" fill="#166534"/><text x="900.0" y="386.5" class="name" text-anchor="middle" style="fill:#FFFFFF;font-size:12px">Return by month</text>
+  <path d="M804 266.0 H816" class="edge" marker-end="url(#arrow)"/>
+  <text x="820" y="420" class="count" text-anchor="start">reads the Semantic tables</text>
+  <text x="820" y="436" class="count" text-anchor="start">and the measures</text>
+  <rect x="816" y="460" width="168" height="32" rx="7" fill="#FFFFFF" stroke="#22C55E" stroke-width="1.4"/><text x="826" y="481" class="name">docs/, 4 charts</text>
+  <text x="820" y="508" class="count" text-anchor="start">README charts, drawn</text>
+  <text x="820" y="524" class="count" text-anchor="start">as the notebook runs</text>
+  <rect x="228" y="480" width="576" height="46" rx="7" fill="#F8FAFC" stroke="#64748B" stroke-width="1.2" stroke-dasharray="4 4"/><text x="238" y="499" class="name">SQL check, DuckDB (section 7), not a layer</text><text x="238" y="517" class="count">recomputes recency, frequency, spend, group shares and the return rate; the notebook stops on a difference</text>
 </svg>

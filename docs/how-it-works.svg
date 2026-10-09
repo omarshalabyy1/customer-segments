@@ -1,73 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 290" width="1000" height="290" role="img" aria-label="How it works: 01 Clean, duplicates, unknown customers and fees out, returns taken off spend; 02 Score, recency, frequency and spend, each scored 1 to 4; 03 Group, champions, loyal, new, at risk and lost; 04 Cohorts, how many of each month's new customers come back; 05 Report, a Power BI page per group with who to call first.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280" width="1000" height="280" role="img" aria-label="How it works, in six layers: 01 Bronze layer, the invoice file as received, every line of both yearly sheets; 02 Silver layer, duplicates, unknown customers and fees out, one row per invoice; 03 Gold layer, recency, frequency and spend each scored 1 to 4, five groups and the at-risk call list; 04 Semantic layer, invoices.csv and customers.csv, the two tables Power BI loads; 05 Analytical layer, cohorts and 14 DAX measures; 06 Reporting layer, a Power BI page per group with who to call first.">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0B1220"/>
-      <stop offset="0.55" stop-color="#10213A"/>
-      <stop offset="1" stop-color="#1E1B4B"/>
-    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#64748B"/>
+    </marker>
   </defs>
   <style>
     text { font-family: "Segoe UI", -apple-system, Helvetica, Arial, sans-serif; }
-    .title { font-size: 21px; font-weight: 700; fill: #FFFFFF; }
-    .sub { font-size: 13.5px; fill: #CBD5E1; }
-    .num { font-size: 13px; font-weight: 700; fill: #FFFFFF; }
-    .step { font-size: 16px; font-weight: 700; fill: #FFFFFF; }
-    .desc { font-size: 13px; fill: #94A3B8; }
-    .link { fill: none; stroke: #64748B; stroke-width: 2; stroke-dasharray: 4 6; animation: flow 1.6s linear infinite; }
-    @keyframes flow { to { stroke-dashoffset: -20; } }
+    .title { font-size: 21px; font-weight: 700; fill: #0E1630; }
+    .sub { font-size: 13.5px; fill: #475569; }
+    .layer { font-size: 13px; font-weight: 700; }
+    .where { font-size: 11.5px; fill: #506078; }
+    .name { font-size: 13px; fill: #0E1630; }
+    .count { font-size: 11.5px; fill: #506078; }
+    .col { font-size: 12.5px; fill: #0E1630; }
+    .key { font-size: 11px; font-weight: 700; }
+    .step { font-size: 15px; font-weight: 700; fill: #0E1630; }
+    .num { font-size: 12px; font-weight: 700; }
+    .desc { font-size: 12.5px; fill: #475569; }
+    .edge { fill: none; stroke: #64748B; stroke-width: 1.4; }
   </style>
-
-  <rect width="1000" height="290" rx="22" fill="url(#bg)"/>
+  <rect x="1" y="1" width="998" height="278" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
   <text x="40" y="52" class="title">How it works</text>
-  <text x="40" y="76" class="sub">One Python notebook does steps 1 to 4 and checks the numbers in SQL. Power BI shows them.</text>
-
-  <path class="link" d="M208 175h20"/>
-  <path class="link" d="M396 175h20"/>
-  <path class="link" d="M584 175h20"/>
-  <path class="link" d="M772 175h20"/>
-
-  <!-- 01 Clean -->
-  <rect x="40" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
-  <circle cx="70" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
-  <text x="70" y="143" class="num" text-anchor="middle">01</text>
-  <text x="96" y="144" class="step">Clean</text>
-  <text x="56" y="180" class="desc">Duplicates, unknown</text>
-  <text x="56" y="199" class="desc">customers and fees out;</text>
-  <text x="56" y="218" class="desc">returns off the spend</text>
-
-  <!-- 02 Score -->
-  <rect x="228" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
-  <circle cx="258" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
-  <text x="258" y="143" class="num" text-anchor="middle">02</text>
-  <text x="284" y="144" class="step">Score</text>
-  <text x="244" y="180" class="desc">Recency, frequency</text>
-  <text x="244" y="199" class="desc">and spend, each</text>
-  <text x="244" y="218" class="desc">scored 1 to 4</text>
-
-  <!-- 03 Group -->
-  <rect x="416" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
-  <circle cx="446" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
-  <text x="446" y="143" class="num" text-anchor="middle">03</text>
-  <text x="472" y="144" class="step">Group</text>
-  <text x="432" y="180" class="desc">Champions, loyal,</text>
-  <text x="432" y="199" class="desc">new, at risk</text>
-  <text x="432" y="218" class="desc">and lost</text>
-
-  <!-- 04 Cohorts -->
-  <rect x="604" y="105" width="168" height="140" rx="14" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.7"/>
-  <circle cx="634" cy="138" r="16" fill="#2563EB" fill-opacity="0.35"/>
-  <text x="634" y="143" class="num" text-anchor="middle">04</text>
-  <text x="660" y="144" class="step">Cohorts</text>
-  <text x="620" y="180" class="desc">How many of each</text>
-  <text x="620" y="199" class="desc">month's new customers</text>
-  <text x="620" y="218" class="desc">come back</text>
-
-  <!-- 05 Report -->
-  <rect x="792" y="105" width="168" height="140" rx="14" fill="#C2410C" fill-opacity="0.12" stroke="#FB923C" stroke-opacity="0.8"/>
-  <circle cx="822" cy="138" r="16" fill="#C2410C" fill-opacity="0.6"/>
-  <text x="822" y="143" class="num" text-anchor="middle">05</text>
-  <text x="848" y="144" class="step">Report</text>
-  <text x="808" y="180" class="desc">A Power BI page per</text>
-  <text x="808" y="199" class="desc">group, with who to</text>
-  <text x="808" y="218" class="desc">call first</text>
+  <text x="40" y="76" class="sub">The Python notebook builds layers 1 to 4 and the cohort table, and checks the numbers in SQL. Power BI adds the measures and pages.</text>
+  <rect x="30" y="100" width="148" height="150" rx="14" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.6"/>
+  <path d="M30 114 a14 14 0 0 1 14 -14 h120 a14 14 0 0 1 14 14 v24 h-148 Z" fill="#3B82F6"/>
+  <text x="42" y="124" class="num" style="fill:#0B1220">01</text><text x="66" y="124" class="layer" style="fill:#0B1220">Bronze layer</text>
+  <text x="42" y="162" class="desc">The invoice file as</text>
+  <text x="42" y="181" class="desc">received: every line,</text>
+  <text x="42" y="200" class="desc">both yearly sheets</text>
+  <rect x="186" y="100" width="148" height="150" rx="14" fill="#FFFFFF" stroke="#0EA5E9" stroke-width="1.6"/>
+  <path d="M186 114 a14 14 0 0 1 14 -14 h120 a14 14 0 0 1 14 14 v24 h-148 Z" fill="#0EA5E9"/>
+  <text x="198" y="124" class="num" style="fill:#0B1220">02</text><text x="222" y="124" class="layer" style="fill:#0B1220">Silver layer</text>
+  <text x="198" y="162" class="desc">Duplicates, unknown</text>
+  <text x="198" y="181" class="desc">customers and fees</text>
+  <text x="198" y="200" class="desc">out; one row per</text>
+  <text x="198" y="219" class="desc">invoice</text>
+  <path d="M178 195 H186" class="edge" marker-end="url(#arrow)"/>
+  <rect x="342" y="100" width="148" height="150" rx="14" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.6"/>
+  <path d="M342 114 a14 14 0 0 1 14 -14 h120 a14 14 0 0 1 14 14 v24 h-148 Z" fill="#F59E0B"/>
+  <text x="354" y="124" class="num" style="fill:#0B1220">03</text><text x="378" y="124" class="layer" style="fill:#0B1220">Gold layer</text>
+  <text x="354" y="162" class="desc">Recency, frequency</text>
+  <text x="354" y="181" class="desc">and spend scored</text>
+  <text x="354" y="200" class="desc">1 to 4; five groups;</text>
+  <text x="354" y="219" class="desc">the at-risk list</text>
+  <path d="M334 195 H342" class="edge" marker-end="url(#arrow)"/>
+  <rect x="498" y="100" width="148" height="150" rx="14" fill="#FFFFFF" stroke="#14B8A6" stroke-width="1.6"/>
+  <path d="M498 114 a14 14 0 0 1 14 -14 h120 a14 14 0 0 1 14 14 v24 h-148 Z" fill="#14B8A6"/>
+  <text x="510" y="124" class="num" style="fill:#0B1220">04</text><text x="534" y="124" class="layer" style="fill:#0B1220">Semantic layer</text>
+  <text x="510" y="162" class="desc">invoices.csv and</text>
+  <text x="510" y="181" class="desc">customers.csv, the</text>
+  <text x="510" y="200" class="desc">two tables Power BI</text>
+  <text x="510" y="219" class="desc">loads</text>
+  <path d="M490 195 H498" class="edge" marker-end="url(#arrow)"/>
+  <rect x="654" y="100" width="148" height="150" rx="14" fill="#FFFFFF" stroke="#A855F7" stroke-width="1.6"/>
+  <path d="M654 114 a14 14 0 0 1 14 -14 h120 a14 14 0 0 1 14 14 v24 h-148 Z" fill="#A855F7"/>
+  <text x="666" y="124" class="num" style="fill:#FFFFFF">05</text><text x="690" y="124" class="layer" style="fill:#FFFFFF">Analytical layer</text>
+  <text x="666" y="162" class="desc">Cohorts: who comes</text>
+  <text x="666" y="181" class="desc">back; 14 DAX</text>
+  <text x="666" y="200" class="desc">measures</text>
+  <path d="M646 195 H654" class="edge" marker-end="url(#arrow)"/>
+  <rect x="810" y="100" width="148" height="150" rx="14" fill="#FFFFFF" stroke="#22C55E" stroke-width="1.6"/>
+  <path d="M810 114 a14 14 0 0 1 14 -14 h120 a14 14 0 0 1 14 14 v24 h-148 Z" fill="#22C55E"/>
+  <text x="822" y="124" class="num" style="fill:#0B1220">06</text><text x="846" y="124" class="layer" style="fill:#0B1220">Reporting layer</text>
+  <text x="822" y="162" class="desc">A Power BI page per</text>
+  <text x="822" y="181" class="desc">group, with who to</text>
+  <text x="822" y="200" class="desc">call first</text>
+  <path d="M802 195 H810" class="edge" marker-end="url(#arrow)"/>
 </svg>
